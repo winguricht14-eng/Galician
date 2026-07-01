@@ -642,7 +642,7 @@
         { id: 1, band: 'Winguricht', cat: 'cassette', name:'Winguricht - Шляхом Вогня', price: 10, img: ['WF.jpg','WF2.jpg'], stock: 'new arrival', ua_price: 500 },
         { id: 2, band: 'Moldovan Wall', cat: 'cassette', name:'Moldovan Wall - Baltagul Țării', price: 8, old_price: 10, img: ['MW.jpg'], stock: 'new arrival', ua_price: 400 },
          { id: 3, band: 'Winguricht', cat: 'patch', name:'Winguricht - Logo Patch/Нашивка  (10x2,5)', price: 5, img: ['n.jpg','a.jpg','sh.jpg'], stock: 'new arrival', ua_price: 250 },
-         { id: 4, band: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10, img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 500},
+         { id: 4, band: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10, img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 450},
         { id: 5, band: 'Winguricht', cat: 'cassette', name: 'Winguricht - Зими й Пристрасті (cassette)', price: 8, old_price: 10, img : ['grim.jpg','passion.jpg'], stock: 'available', ua_price: 400 },
         { id: 6, band: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
         { id: 7, band: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'left 1', ua_price: 400},
@@ -1216,46 +1216,59 @@ function closeErrorModal() {
 }
 
 // ФІНАЛЬНИЙ ПЕРЕХІД І НАДІСЛАННЯ ЛИСТА (ЗБЕРЕЖЕНО НАЛАШТУВАННЯ ДЛЯ ТЕЛЕФОНІВ 📱)
+// ФІНАЛЬНИЙ ПЕРЕХІД І НАДСИЛАННЯ ЛИСТА (ОПТИМІЗОВАНО)
 function executeFinalPayment(clientName, clientAddress, amount) {
     const currentCartItems = [...cart]; 
     const p2pOrderId = 'P2P-' + Math.floor(100000 + Math.random() * 900000);
+    const itemsListText = currentCartItems.map(item => `${item.name} (x${item.qty || 1})`).join(', ');
 
-    // 1. НАДІСЛАННЯ ЛИСТА АДМІНУ ЧЕРЕЗ EMAILJS
+    // СТВОРЮЄМО УНІВЕРСАЛЬНИЙ ОБ'ЄКТ (Для всіх функцій і шаблонів на сайті)
     const details = {
+        // Поля строго для твого нового шаблону EmailJS:
         id: p2pOrderId,
+        order_id: p2pOrderId,
+        name: clientName,
+        user_name: clientName,
+        user_email: "galicianelitism@gmail.com", // Валідний email, щоб сервіс не блокував відправку
+        order_details: itemsListText,
+        total_price: amount.toFixed(2) + " EUR",
+        adress_information: clientAddress,
+
+        // Поля для старої функції sendOrderEmail (з head частини сайту), щоб код не видавав помилку:
         payer: {
-            email_address: "P2P Transfer"
+            name: { full_name: clientName },
+            email_address: "galicianelitism@gmail.com"
         }
     };
 
+    // Відправка (викликаємо твою перевірену функцію з правильним шаблоном template_u11bkb9)
     if (typeof sendOrderToAdmin === 'function') {
         sendOrderToAdmin(details, currentCartItems);
     } else if (typeof sendOrderEmail === 'function') {
         sendOrderEmail(details);
     }
 
-    // 2. ГОТУЄМО ДАНІ ДЛЯ ДИЗАЙНЕРСЬКОГО ЧЕКА НА ЕКРАНІ
+    // Дані для успішного чека на екрані
     const orderData = {
         id: p2pOrderId,
         name: clientName,
         email: "Check your PayPal account",
         amount: amount.toFixed(2),
-        items: currentCartItems.map(item => `${item.name} x${item.qty || 1}`).join(', '),
+        items: itemsListText,
         status: 'PENDING VERIFICATION' 
     };
 
-    // 3. ОЧИЩАЄМО КОШИК ТА ИНТЕРФЕЙС
+    // Очищення кошика та інтерфейсу
     cart = [];
     if (typeof updateUI === 'function') updateUI(); 
 
-    // 4. МАЛЮЄМО ТЕМНИЙ ЧЕК ЗАМОВЛЕННЯ
     if (typeof renderOrderSuccess === 'function') {
         renderOrderSuccess(orderData);
     }
     
     if (typeof toggleCart === 'function') toggleCart(false);
 
-    // 5. РЕДІРЕКТ НА PAYPAL (Ідеально працює на мобілках)
+    // Редірект на PayPal
     const myPayPalUsername = "GalicianElitism"; 
     const payPalUrl = `https://www.paypal.com/paypalme/${myPayPalUsername}/${amount.toFixed(2)}EUR`;
     
@@ -1263,27 +1276,47 @@ function executeFinalPayment(clientName, clientAddress, amount) {
         window.location.href = payPalUrl; 
     }, 1500);
 }
+// ПРЯМА ВІДПРАВКА В EMAILJS БЕЗ НАКЛАДОК ТА ПОМИЛОК
 function sendOrderToAdmin(details, items) {
     const nameInput = document.getElementById('clientName');
     const addressInput = document.getElementById('clientAddress');
 
+    // Безпечно беремо вже готові пораховані значення з details, щоб уникнути помилок .reduce()
+    const finalPrice = details.total_price || "0.00 EUR";
+    const finalDetails = details.order_details || "No items";
+
     const orderData = {
         order_id: details.id,
         client_name: nameInput && nameInput.value ? nameInput.value : "Customer",
-        client_email: details.payer.email_address,
+        client_email: "galicianelitism@gmail.com",
         address: addressInput && addressInput.value ? addressInput.value : "No address provided",
-        total_amount: items.reduce((sum, item) => sum + (item.price * item.qty), 0).toFixed(2) + " EUR",
-        items_list: items.map(i => `${i.name} (x${i.qty})`).join(', ')
+        total_amount: finalPrice,
+        items_list: finalDetails,
+
+        // Змінні для твого шаблону EmailJS:
+        user_name: nameInput && nameInput.value ? nameInput.value : "Customer",
+        user_email: "galicianelitism@gmail.com",
+        order_details: finalDetails,
+        total_price: finalPrice,
+        adress_information: addressInput && addressInput.value ? addressInput.value : "No address provided"
     };
 
-    emailjs.send("service_yh500kt", "template_ul1bkb9", orderData)
-        .then(() => console.log("Order info sent to admin!"))
-        .catch(err => console.error("EmailJS Error:", err));
-} // ОСЬ ЦЯ ДУЖКА, ЯКОЇ НЕ ВИСТАЧАЛО!
-    function filterCat(cat) { 
-        if (cat === 'all') { render(products); hideBands(); } 
-        else { render(products.filter(p => p.cat === cat)); toggleBands(); }
-    }
+   emailjs.send("service_yh500kt", "template_ul1bkb9", orderData)
+        .then((response) => {
+            console.log("SUCCESS!", response.status, response.text);
+        })
+        .catch((err) => {
+            console.error("КРИТИЧНА ПОМИЛКА EMAILJS:", err);
+        });
+}
+
+function filterCat(cat) {
+    if (cat === 'all') { 
+    render(products); // Передаємо наш базовий масив 'products' у функцію 'render'
+    hideBands(); 
+}
+    else { render(products.filter(p => p.cat === cat)); toggleBands(); } }
+
 
     function filterBand(band) { render(products.filter(p => p.band === band)); }
     function toggleBands() { document.getElementById('bandDropdown').classList.add('active'); }
@@ -1310,6 +1343,32 @@ function sendOrderToAdmin(details, items) {
     
     // Приховуємо зайві елементи, якщо потрібно (наприклад, фільтри)
     if (typeof hideBands === 'function') hideBands();
+  }
+    // ОДНА і єдина правильна функція пошуку (без дублікатів та HTML-тегів)
+function handleSearch() {
+    // 1. Зчитуємо текст з інпуту
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
+    
+    // 2. Якщо пошук пустий — показуємо знову ВСІ товари
+    if (!query) {
+        render(products);
+        return;
+    }
+    
+    // 3. Фільтруємо масив товарів за назвою (name) або гуртом (band)
+    const filtered = products.filter(p => {
+        const nameMatch = p.name ? p.name.toLowerCase().includes(query) : false;
+        const bandMatch = p.band ? p.band.toLowerCase().includes(query) : false;
+        return nameMatch || bandMatch;
+    });
+    
+    // 4. Малюємо відфільтровані товари на екрані
+    render(filtered);
+
+    // UX штрих: автоматично скролимо екран до результатів пошуку
+    document.getElementById('productGrid')?.scrollIntoView({ behavior: 'smooth' });
+}
+ 
 
     grid.innerHTML = `
         <div style="max-width: 600px; margin: 40px auto; background: #0a0a0a; border: 1px solid #222; padding: 40px 20px; color: #fff; font-family: 'Helvetica', sans-serif;">
@@ -1369,7 +1428,7 @@ function sendOrderToAdmin(details, items) {
     `;
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+
     
 </script>
 </body>
