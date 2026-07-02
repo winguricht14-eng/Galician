@@ -574,6 +574,12 @@
         Confirm & Pay <i class="fa fa-arrow-right"></i>
     </button>
 </div>
+<button onclick="document.getElementById('orderReviewModal').style.display='none'; cart = []; if(typeof updateUI === 'function') updateUI(); if(typeof toggleCart === 'function') toggleCart(false);" 
+        style="width: 100%; margin-top: 15px; background: #111; color: #888; border: 1px solid #292929; padding: 12px; cursor: pointer; font-family: monospace; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; transition: 0.3s;"
+        onmouseover="this.style.background='#c1121f'; this.style.color='#fff'; this.style.borderColor='#c1121f';"
+        onmouseout="this.style.background='#111'; this.style.color='#888'; this.style.borderColor='#222';">
+    Close & Clear Cart
+</button>
     </div>
 </div>
 <div id="errorValidationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 4000; justify-content: center; align-items: center; backdrop-filter: blur(3px);">
@@ -674,7 +680,12 @@
         'US': {  ship: 30 }, 'CA': {  ship: 30 }, 'MD': {  ship: 8 },
     };
 // --- БЛОК НОВИН (СЮДИ ДОДАВАЙ НОВІ ПУБЛІКАЦІЇ) ---
-const news = [
+const news = [ {
+        date: "27.06.2026",
+         title: "Winguricht - Шляхом Вогня cassette ",
+        img: "WF.jpg",
+        content: "Released by Galician Elitism, Limited to 20 copies.\n\n Each tape includes an empty 308 Winchester bullet \n\nShipping Worldwide,"
+        },
     {
         date: "30.05.2026",
          title: "Moldovan Wall - Baltagul Țării tape ",
@@ -1261,8 +1272,8 @@ function closeErrorModal() {
     document.getElementById('errorValidationModal').style.display = 'none';
 }
 
-// ФІНАЛЬНИЙ ПЕРЕХІД І НАДІСЛАННЯ ЛИСТА (ЗБЕРЕЖЕНО НАЛАШТУВАННЯ ДЛЯ ТЕЛЕФОНІВ 📱)
-// ФІНАЛЬНИЙ ПЕРЕХІД І НАДСИЛАННЯ ЛИСТА (ОПТИМІЗОВАНО)
+
+
 function executeFinalPayment(clientName, clientAddress, amount) {
     const currentCartItems = [...cart];
     const p2pOrderId = 'P2P-' + Math.floor(100000 + Math.random() * 900000);
@@ -1323,7 +1334,18 @@ function executeFinalPayment(clientName, clientAddress, amount) {
             items_list: itemsListText + ` | Delivery: ${shippingPrice.toFixed(2)} EUR`,
             order_details: itemsListText + ` | Delivery: ${shippingPrice.toFixed(2)} EUR`,
             user_phone: document.getElementById('clientPhone')?.value.trim() || "Not provided",
-            time: currentDateTime
+            time: currentDateTime,
+            
+            // Додай ці два поля всередину свого customerOrderData, щоб заповнився шаблон для людей:
+orders: currentCartItems.map(item => ({
+    name: item.name,
+    price: (item.price * (item.qty || 1)).toFixed(2) + " EUR",
+    units: item.qty || 1
+})),
+cost: {
+    shipping: shippingPrice.toFixed(2) + " EUR",
+    tax: "0.00 EUR"
+}
         };
 
         // Заміни "template_CUSTOMER_ID" на ID твого нового шаблону для людей з кабінету EmailJS
@@ -1333,36 +1355,72 @@ function executeFinalPayment(clientName, clientAddress, amount) {
     }
 
     // Дані для успішного чека на екрані
-    const orderData = {
-        id: p2pOrderId,
-        name: clientName,
-        email: "Check your PayPal account",
-        amount: amount.toFixed(2),
-        items: itemsListText,
-        status: "PENDING VERIFICATION"
-    };
+// --- ПЕРЕМАЛЬОВУЄМО ВІКНО REVIEW НА МОНОХРОМНИЙ БІЛИЙ UI З ХЕЙЛОМ ---
+    const reviewModal = document.getElementById('orderReviewModal');
+    if (reviewModal) {
+        if (typeof toggleCart === 'function') toggleCart(false);
 
-    // Очищення кошика та інтерфейсу
-    cart = [];
-    if (typeof updateUI === 'function') updateUI();
+        // Формуємо список товарів
+        const itemsHtml = currentCartItems.map(item => `
+            <div style="display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #222; font-size: 12px;">
+                <span style="color: #aaa;">${item.name} (x${item.qty || 1})</span>
+                <span style="color: #fff; font-weight: bold;">${(item.price * (item.qty || 1)).toFixed(2)} EUR</span>
+            </div>
+        `).join('');
 
-    if (typeof renderOrderSuccess === 'function') {
-        renderOrderSuccess(orderData);
+        // Вставляємо чистий, легкий білий професійний UI
+        reviewModal.innerHTML = `
+            <div style="background: #0a0a0a; border: 1px solid #eeeeee; padding: 30px; max-width: 500px; width: 90%; margin: auto; box-sizing: border-box; font-family: monospace; color: #eeeeee; text-align: left; letter-spacing: 0.5px; box-shadow: 0 0 15px rgba(255,255,255,0.03);">
+                
+                <h3 style="color: #ffffff; text-transform: uppercase; letter-spacing: 2px; margin-top: 0; border-bottom: 1px solid #eeeeee; padding-bottom: 12px; font-size: 15px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fa fa-check-circle" style="color: #ffffff;"></i> ORDER CONFIRMED
+                </h3>
+                
+                <p style="font-size: 12px; color: #888888; margin-bottom: 20px; line-height: 1.6;">
+                    Your order <strong style="color: #ffffff;">${p2pOrderId}</strong> has been successfully generated. Confirmation emails have been sent to your inbox.
+                </p>
+
+                <h4 style="text-transform: uppercase; font-size: 11px; letter-spacing: 1px; color: #888888; margin-bottom: 10px;">Your Order Details:</h4>
+                <div style="max-height: 150px; overflow-y: auto; margin-bottom: 15px; background: #111111; padding: 12px; border: 1px solid #222222;">
+                    ${itemsHtml}
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; background: #111111; padding: 14px; border: 1px solid #222222; margin-bottom: 20px;">
+                    <span style="font-size: 11px; text-transform: uppercase; color: #888888; letter-spacing: 1px;">Total Amount to Pay:</span>
+                    <strong style="font-size: 16px; color: #ffffff; letter-spacing: 1px;">${amount.toFixed(2)} EUR</strong>
+                </div>
+
+                <div style="background: #111111; border-left: 3px solid #eeeeee; padding: 12px; margin-bottom: 20px; font-size: 11px; line-height: 1.5; color: #aaaaaa; border-top: 1px solid #222222; border-right: 1px solid #222222; border-bottom: 1px solid #222222;">
+                    <strong style="color: #ffffff; text-transform: uppercase;">Next Step (PayPal):</strong><br>
+                    We have opened PayPal in a new tab. Please complete the transfer of <span style="color:#ffffff; font-weight:bold;">${amount.toFixed(2)} EUR</span> to our business account manually.
+                </div>
+
+                <p style="font-size: 11px; color: #666666; font-style: italic; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; text-align: center;">
+                    Hails, Galician Elitism 
+                </p>
+
+                <button onclick="document.getElementById('orderReviewModal').style.display='none'; cart = []; if(typeof updateUI === 'function') updateUI(); window.location.reload();" 
+                        style="width: 100%; background: none; color: #aaaaaa; border: 1px solid #444444; padding: 14px; cursor: pointer; font-family: monospace; text-transform: uppercase; font-size: 11px; font-weight: bold; letter-spacing: 2px; transition: 0.3s; text-align: center;"
+                        onmouseover="this.style.background='#ffffff'; this.style.color='#000000'; this.style.borderColor='#ffffff'; this.style.boxShadow='0 0 10px rgba(255,255,255,0.2)';"
+                        onmouseout="this.style.background='none'; this.style.color='#aaaaaa'; this.style.borderColor='#444444'; this.style.boxShadow='none';">
+                    Close & Clear Cart
+                </button>
+            </div>
+        `;
+
+        reviewModal.style.display = 'flex';
     }
 
-    if (typeof toggleCart === 'function') toggleCart(false);
-
-    // Редірект на PayPal
-    const myPayPalUsername = "GalicianElitism";
-    const paypalUrl = `https://www.paypal.com/paypalme/${myPayPalUsername}/${amount.toFixed(2)}EUR`;
+    // Редірект на PayPal у новій вкладці
+    const myPayPalUsername = "glcneltsm";
+    const paypalUrl = `https://www.paypal.com/paypalme/${myPayPalUsername}`;
 
     setTimeout(() => {
-        window.location.href = paypalUrl;
+        window.open(paypalUrl, '_blank');
     }, 1500);
 }
 
-// ПРЯМА ВІДПРАВКА В EMAILJS БЕЗ НАКЛАДОК ТА ПОМИЛОК
-// ПРЯМА ВІДПРАВКА В EMAILJS БЕЗ НАКЛАДОК ТА ПОМИЛОК
+
 function sendOrderToAdmin(details, items) {
     const nameInput = document.getElementById('clientName');
     const addressInput = document.getElementById('clientAddress');
@@ -1595,6 +1653,8 @@ function handleSearch() {
     `;
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    
 
     
 </script>
