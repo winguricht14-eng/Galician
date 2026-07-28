@@ -1452,32 +1452,29 @@ function sendOrderToAdmin(details, items) {
     let itemsPriceStr = details.total_price || "0.00";
     let itemsPrice = parseFloat(itemsPriceStr.replace(/[^\d.]/g, '')) || 0;
 
-    let pureItemsPrice = cart.reduce((sum, item) => sum + (item.price * (item.qty || 1)), 0);
-    if (pureItemsPrice > 0) {
-        itemsPrice = pureItemsPrice;
-    }
+    // 1. Очищаємо текст товарів та замінюємо комати на крапки
+let pureItemsPrice = cart.reduce((sum, item) => sum + (parseFloat(String(item.price).replace(',', '.')) * (item.qty || 1)), 0);
+
+// 2. Безпечно отримуємо суму доставки
+// 2. Безпечно отримуємо суму доставки
 let shippingPrice = 0;
+const shippingElem = document.getElementById('shippingPrice') ||
+                     document.getElementById('shipping') ||
+                     document.querySelector('.shipping-price') ||
+                     document.querySelector('.delivery-price') ||
+                     document.querySelector('.shipping');
+
+if (shippingElem) {
+    // Замінюємо кому на крапку і прибираємо всі зайві символи (букви, пробіли, валюту)
+    const cleanText = shippingElem.innerText.replace(',', '.').replace(/[^\d.]/g, '');
+    shippingPrice = parseFloat(cleanText) || 0;
+}
+
+// 3. Підраховуємо правильну підсумкову суму
+const finalTotalCalculated = (pureItemsPrice + shippingPrice).toFixed(2) + " EUR";
+    
 
 
-    // 1. Спочатку перевіряємо, чи є доставка у глобальних змінних JS
-    if (typeof shippingCost !== 'undefined') {
-        shippingPrice = parseFloat(shippingCost) || 0;
-    } else if (typeof selectedShipping !== 'undefined') {
-        shippingPrice = parseFloat(selectedShipping) || 0;
-    } else {
-        // 2. Якщо змінних немає, шукаємо в HTML за всіма можливими ID та класами
-        const shippingElement = document.getElementById('shippingPrice') || 
-                                document.getElementById('shipping-cost') || 
-                                document.querySelector('.shipping-cost') || 
-                                document.querySelector('.shipping-price');
-
-        if (shippingElement) {
-            const cleanText = shippingElement.innerText.replace(/[^\d.]/g, '');
-            shippingPrice = parseFloat(cleanText) || 0;
-        }
-    }
-
-    const finalTotalCalculated = (itemsPrice + shippingPrice).toFixed(2) + " EUR";
 
     const orderData = {
         orderId: details.id || "ORDER-" + Math.floor(Math.random() * 100000),
