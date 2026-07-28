@@ -1452,30 +1452,36 @@ function sendOrderToAdmin(details, items) {
     let itemsPriceStr = details.total_price || "0.00";
     let itemsPrice = parseFloat(itemsPriceStr.replace(/[^\d.]/g, '')) || 0;
 
-    // 1. Очищаємо текст товарів та замінюємо комати на крапки
-let pureItemsPrice = cart.reduce((sum, item) => sum + (parseFloat(String(item.price).replace(',', '.')) * (item.qty || 1)), 0);
+// 1. Отримуємо вибрану країну зі селекта
+const countrySelect = document.getElementById('country') || document.getElementById('clientCountry');
+const selectedCountry = countrySelect ? countrySelect.value : 'PL';
 
-// 2. Безпечно отримуємо суму доставки
-// 2. Безпечно отримуємо суму доставки
+// 2. Беремо список товарів з аргументу або з глобального cart
+const currentItems = items || (typeof cart !== 'undefined' ? cart : []);
+
 let shippingPrice = 0;
-const shippingElem = document.getElementById('shippingPrice') ||
-                     document.getElementById('shipping') ||
-                     document.querySelector('.shipping-price') ||
-                     document.querySelector('.delivery-price') ||
-                     document.querySelector('.shipping');
+if (typeof countryData !== 'undefined' && countryData[selectedCountry]) {
+    shippingPrice = countryData[selectedCountry].ship || 0;
+} else {
+    const reviewElem = document.getElementById('reviewAmount');
+    const cleanTotalText = reviewElem ? reviewElem.innerText.replace(',', '.').replace(/[^\d.]/g, '') : '';
+    const totalWithShip = parseFloat(cleanTotalText) || 0;
+    
+    let pureItems = currentItems.reduce((sum, item) => {
+        const p = parseFloat(String(item.price).replace(',', '.')) || 0;
+        return sum + (p * (item.qty || 1));
+    }, 0);
 
-if (shippingElem) {
-    // Замінюємо кому на крапку і прибираємо всі зайві символи (букви, пробіли, валюту)
-    const cleanText = shippingElem.innerText.replace(',', '.').replace(/[^\d.]/g, '');
-    shippingPrice = parseFloat(cleanText) || 0;
+    shippingPrice = totalWithShip > pureItems ? totalWithShip - pureItems : 0;
 }
 
-// 3. Підраховуємо правильну підсумкову суму
+// 3. Рахуємо точні суми для листа
+let pureItemsPrice = currentItems.reduce((sum, item) => {
+    const p = parseFloat(String(item.price).replace(',', '.')) || 0;
+    return sum + (p * (item.qty || 1));
+}, 0);
+
 const finalTotalCalculated = (pureItemsPrice + shippingPrice).toFixed(2) + " EUR";
-    
-
-
-
     const orderData = {
         orderId: details.id || "ORDER-" + Math.floor(Math.random() * 100000),
         time: currentDateTime,
@@ -1485,11 +1491,15 @@ const finalTotalCalculated = (pureItemsPrice + shippingPrice).toFixed(2) + " EUR
             phone: phoneInput && phoneInput.value ? phoneInput.value : "Not provided",
             address: addressInput && addressInput.value ? addressInput.value : "No address provided"
         },
-        items: cart.map(item => ({
-            name: item.name,
-            quantity: item.qty || 1,
-            price: (item.price * (item.qty || 1)).toFixed(2) + " EUR"
-        })),
+        items: currentItems.map(item => {
+            const itemPriceNum = parseFloat(String(item.price).replace(',', '.')) || 0;
+            const qty = item.qty || 1;
+            return {
+                name: item.name,
+                quantity: qty,
+                price: (itemPriceNum * qty).toFixed(2) + " EUR"
+            };
+        }),
         totalAmount: finalTotalCalculated,
         shippingPrice: shippingPrice.toFixed(2) + " EUR"
     };
