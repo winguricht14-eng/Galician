@@ -1529,7 +1529,7 @@ function filterCat(cat) {
         updateUserUI();
         render(products);
     };
-  function renderOrderSuccess(order) {
+  function renderOrderSuccess(details = {}) {
     const grid = document.getElementById('productGrid');
     
     // Приховуємо зайві елементи, якщо потрібно (наприклад, фільтри)
@@ -1560,8 +1560,8 @@ function handleSearch() {
     document.getElementById('productGrid')?.scrollIntoView({ behavior: 'smooth' });
 }
  
-    const grid = document.getElementById('grid') || document.querySelector('.grid') || document.querySelector('main') || document.body;
-    const order = details || {};
+  const grid = document.getElementById('grid') || document.querySelector('.grid') || document.querySelector('main') || document.body;
+const order = (typeof details !== 'undefined' && details) ? details : {};
     grid.innerHTML = `
         <div style="max-width: 600px; margin: 40px auto; background: #0a0a0a; border: 1px solid #222; padding: 40px 20px; color: #fff; font-family: 'Helvetica', sans-serif;">
             
