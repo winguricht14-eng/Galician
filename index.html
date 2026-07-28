@@ -1456,11 +1456,25 @@ function sendOrderToAdmin(details, items) {
     if (pureItemsPrice > 0) {
         itemsPrice = pureItemsPrice;
     }
+let shippingPrice = 0;
 
-    const shippingElement = document.getElementById('shippingPrice') || document.querySelector('.shipping-cost');
-    let shippingPrice = 0;
-    if (shippingElement) {
-        shippingPrice = parseFloat(shippingElement.innerText.replace(/[^\d.]/g, '')) || 0;
+
+    // 1. Спочатку перевіряємо, чи є доставка у глобальних змінних JS
+    if (typeof shippingCost !== 'undefined') {
+        shippingPrice = parseFloat(shippingCost) || 0;
+    } else if (typeof selectedShipping !== 'undefined') {
+        shippingPrice = parseFloat(selectedShipping) || 0;
+    } else {
+        // 2. Якщо змінних немає, шукаємо в HTML за всіма можливими ID та класами
+        const shippingElement = document.getElementById('shippingPrice') || 
+                                document.getElementById('shipping-cost') || 
+                                document.querySelector('.shipping-cost') || 
+                                document.querySelector('.shipping-price');
+
+        if (shippingElement) {
+            const cleanText = shippingElement.innerText.replace(/[^\d.]/g, '');
+            shippingPrice = parseFloat(cleanText) || 0;
+        }
     }
 
     const finalTotalCalculated = (itemsPrice + shippingPrice).toFixed(2) + " EUR";
@@ -1560,7 +1574,7 @@ function handleSearch() {
     document.getElementById('productGrid')?.scrollIntoView({ behavior: 'smooth' });
 }
  
-  const grid = document.getElementById('grid') || document.querySelector('.grid') || document.querySelector('main') || document.body;
+ const grid = document.getElementById('grid') || document.querySelector('.grid') || document.querySelector('main') || document.body;
     
     // Захищаємо всі змінні, щоб нічого не падало
     const orderData = (typeof details !== 'undefined' && details) ? details : {};
