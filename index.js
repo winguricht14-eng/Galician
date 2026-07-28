@@ -25,20 +25,20 @@ app.post("/api/order-notification", async (req, res) => {
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "galicianelitism@gmail.com",
-      subject: `🔔 Нове замовлення №${orderId}`,
+      subject: `New order №${orderId}`,
       html: `
-        <h2>Деталі замовлення №${orderId}</h2>
-        <p><b>Час замовлення:</b> ${time}</p>
+        <h2>Order information №${orderId}</h2>
+        <p><b>Time:</b> ${time}</p>
         <hr>
-        <p><b>Клієнт:</b> ${customer.name}</p>
+        <p><b>Customer:</b> ${customer.name}</p>
         <p><b>Email:</b> ${customer.email}</p>
-        <p><b>Телефон:</b> ${customer.phone}</p>
-        <p><b>Адреса:</b> ${customer.address}</p>
+        <p><b>Phone number:</b> ${customer.phone}</p>
+        <p><b>Full address:</b> ${customer.address}</p>
         <hr>
-        <h3>Товари:</h3>
+        <h3>Items:</h3>
         <ul>${itemsListHtml}</ul>
-        <p><b>Доставка:</b> ${shippingPrice}</p>
-        <p><b>Загальна сума до сплати:</b> <b>${totalAmount}</b></p>
+        <p><b>Sipping:</b> ${shippingPrice}</p>
+        <p><b>Total price to be paid:</b> <b>${totalAmount}</b></p>
       `,
     });
 
