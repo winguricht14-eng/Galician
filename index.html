@@ -1561,7 +1561,17 @@ function handleSearch() {
 }
  
   const grid = document.getElementById('grid') || document.querySelector('.grid') || document.querySelector('main') || document.body;
-const order = (typeof details !== 'undefined' && details) ? details : {};
+    
+    // Захищаємо всі змінні, щоб нічого не падало
+    const orderData = (typeof details !== 'undefined' && details) ? details : {};
+    const orderId = orderData.id ? String(orderData.id).substring(0, 8) : "N/A";
+    const orderName = orderData.name || (orderData.payer ? orderData.payer.name?.given_name : "Customer") || "Customer";
+    const orderEmail = orderData.email || (orderData.payer ? orderData.payer.email_address : "No email") || "No email";
+    const orderStatus = orderData.status || "COMPLETED";
+    const orderAmount = orderData.amount || orderData.total_price || "0.00";
+    const orderItems = Array.isArray(orderData.items) 
+      ? orderData.items.map(i => `${i.name} (x${i.quantity || 1})`).join(', ') 
+      : (orderData.items || "Order Items");
     grid.innerHTML = `
         <div style="max-width: 600px; margin: 40px auto; background: #0a0a0a; border: 1px solid #222; padding: 40px 20px; color: #fff; font-family: 'Helvetica', sans-serif;">
             
