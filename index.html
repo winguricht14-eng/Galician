@@ -1300,6 +1300,11 @@ function executeFinalPayment(clientName, clientAddress, amount) {
     const currentCartItems = [...cart];
     const p2pOrderId = 'P2P-' + Math.floor(100000 + Math.random() * 900000);
     const itemsListText = currentCartItems.map(item => `${item.name} (x${item.qty || 1})`).join(', ');
+     const hasEquipment = currentCartItems.some(item => item.cat === 'equipment');
+if (hasEquipment) {
+    amount += 22; // Додаємо вартість за 1 кг екіпу до загальної суми
+}
+
 
     // СТВОРЮЄМО УНІВЕРСАЛЬНИЙ ОБ'ЄКТ (Для всіх функцій і шаблонів на сайті)
     const details = {
