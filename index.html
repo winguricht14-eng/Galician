@@ -1248,8 +1248,8 @@ function initPayPalMe() {
     // --- ПЕРЕВІРКА НА ЕКІПІРУВАННЯ ---
    const hasEquipment = cart.some(item => item.cat === 'equipment');
 
-    // Якщо екіп — доставка стає рівно 22.00, ігноруючи все інше
-    let finalShipping = hasEquipment ? 22.00 : shippingPrice;
+   
+    let finalShipping = hasEquipment ? 25.00 : shippingPrice;
 
     // Фінальний TOTAL — сума товарів + наша фінальна доставка
     let totalAmount = itemsAmount + finalShipping;
