@@ -647,29 +647,28 @@
     
 
     const products = [
-        { id: 1, band: 'Patron Belt', cat: 'equipment', name:'Patron Belt 5.56x45', price: 90, img: ['patron1.jpg','patron2.jpg','patron3.jpg'], stock: 'new arrival', ua_price: 4500, size: ['1 metr'] },
-         { id: 2, band: 'Patron Belt', cat: 'equipment', name:'Patron Belt 7.62x51', price: 50, img: ['b.jpg','e.jpg','l.jpg'], stock: 'new arrival',ua_price: 2500, size: ['1 metr'] },
-         { id: 3, band: 'Winguricht', cat: 'merch', name:'Winguricht - Шляхом Вогня (Merch)', price: 21, img: ['p.jpg','i.jpg','c.jpg','t.jpg','u.jpg','g.jpg'], stock: 'new arrival', ua_price: 900, sizes: ['S', 'M', 'L','XL'] },
-         { id: 4, band: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Battlelust', price: 10, img: ['Alb.png'], stock: 'new arrival', ua_price: 500 },
-          { id: 5, band: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios & 1389 - Kriegsklinge', price: 10, img: ['spl 2.png','spl.png'], stock: 'new arrival', ua_price: 500 },
-          { id: 6, band: '1389', cat: 'cassette', name:' 1389 & Kiliaxarios - Kriegsklinge', price: 10, img: ['spl.png','spl 2.png'], stock: 'available', ua_price: 500 },
-        { id: 7, band: 'Winguricht', cat: 'cassette', name:'Winguricht - Шляхом Вогня', price: 10, img: ['WF.jpg','WF2.jpg'], stock: 'new arrival', ua_price: 500 },
-        { id: 8, band: 'Moldovan Wall', cat: 'cassette', name:'Moldovan Wall - Baltagul Țării', price: 8, old_price: 10, img: ['MW.jpg'], stock: 'available', ua_price: 400 },
-         { id: 9, band: 'Winguricht', cat: 'patch', name:'Winguricht - Logo Patch/Нашивка  (10x2,5)', price: 5, img: ['n.jpg','a.jpg','sh.jpg'], stock: 'new arrival', ua_price: 200 },
-         { id: 10, band: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10, img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 500 },
-        { id: 11, band: 'Winguricht', cat: 'cassette', name: 'Winguricht - Зими й Пристрасті (cassette)', price: 8, old_price: 10, img : ['grim.jpg','passion.jpg'], stock: 'available', ua_price: 400 },
-        { id: 12, band: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
-        { id: 13, band: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'sold out', ua_price: 400},
-        { id: 14, band: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette)', price: 8, img: ['Sorrow.jpg.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
-        { id: 15, band: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 2', ua_price: 400 },
-        { id: 16, band: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'left 2', ua_price: 500 },
-        { id: 17, band: 'Winguricht', cat: 'cd', name: 'Winguricht - Sorrow of Spilled Blood (CD)', price: 10, img: ['CD sorrow.jpg','sorrowcd.jpg'], stock: 'left 2', ua_price: 500 },
-         { id: 18, band: 'SiaubaSS', cat: 'cassette', name:'SiaubaSS / Winguricht - 1000 years of Brotherhood (cassette)', price: 10, img: ['2split.jpg','1split.jpg'], stock: 'Available', ua_price: 500 },
-        { id: 19, band: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 7, img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 350 },  
-       { id: 20, band: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag (90x150)', price: 14,  img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 700 },
-       { id: 21, band: 'Winguricht', cat: 'flag', name: 'Winguricht - New Logo Flag (90x150)', price: 10, img: ['newflag.jpg'], stock: 'available', ua_price: 500 },
-        { id: 22, band: 'Winguricht', cat: 'merch', name: 'Winguricht - Зими й Пристрасті (Merch)', price: 21, img: ['1.jpg','2.jpg', 'elitism.jpg', '3.jpg'], stock: 'Available', ua_price: 850, sizes: ['S', 'M', 'L'] },
-        { id: 23, band: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 21, img: ['merch_1.jpg'], stock: 'sold out', ua_price: 850 },
+        { id: 1, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 5.56x45', price: 90, img: ['patron1.jpg','patron2.jpg','patron3.jpg'], stock: 'new arrival', ua_price: 4500, size: ['1 metr'] },
+         { id: 2, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 7.62x51', price: 50, img: ['b.jpg','e.jpg','l.jpg'], stock: 'new arrival',ua_price: 2500, size: ['1 metr'] },
+         { id: 3, slug: 'Winguricht', cat: 'merch', name:'Winguricht - Шляхом Вогня (Merch)', price: 21, img: ['p.jpg','i.jpg','c.jpg','t.jpg','u.jpg','g.jpg'], stock: 'new arrival', ua_price: 900, sizes: ['S', 'M', 'L','XL'] },
+         { id: 4, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Battlelust', price: 10, img: ['Alb.png'], stock: 'new arrival', ua_price: 500 },
+          { id: 5, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios & 1389 - Kriegsklinge', price: 10, img: ['spl 2.png','spl.png'], stock: 'new arrival', ua_price: 500 },
+          { id: 6, slug: '1389', cat: 'cassette', name:' 1389 & Kiliaxarios - Kriegsklinge', price: 10, img: ['spl.png','spl 2.png'], stock: 'available', ua_price: 500 },
+        { id: 7, slug: 'Winguricht', cat: 'cassette', name:'Winguricht - Шляхом Вогня', price: 10, img: ['WF.jpg','WF2.jpg'], stock: 'new arrival', ua_price: 500 },
+        { id: 8, slug: 'Moldovan Wall', cat: 'cassette', name:'Moldovan Wall - Baltagul Țării', price: 8, old_price: 10, img: ['MW.jpg'], stock: 'available', ua_price: 400 },
+         { id: 9, slug: 'Winguricht', cat: 'patch', name:'Winguricht - Logo Patch/Нашивка  (10x2,5)', price: 5, img: ['n.jpg','a.jpg','sh.jpg'], stock: 'new arrival', ua_price: 200 },
+         { id: 10, slug: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10, img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 500 },
+        { id: 11, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Зими й Пристрасті (cassette)', price: 8, old_price: 10, img : ['grim.jpg','passion.jpg'], stock: 'available', ua_price: 400 },
+        { id: 12, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
+        { id: 13, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'sold out', ua_price: 400},
+        { id: 14, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette)', price: 8, img: ['Sorrow.jpg.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
+        { id: 15, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 2', ua_price: 400 },
+        { id: 16, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'left 2', ua_price: 500 },
+        { id: 17, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Sorrow of Spilled Blood (CD)', price: 10, img: ['CD sorrow.jpg','sorrowcd.jpg'], stock: 'left 2', ua_price: 500 },
+         { id: 18, slug: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 7, img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 350 },  
+       { id: 19, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag (90x150)', price: 14,  img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 700 },
+       { id: 20, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - New Logo Flag (90x150)', price: 10, img: ['newflag.jpg'], stock: 'available', ua_price: 500 },
+        { id: 21, slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Зими й Пристрасті (Merch)', price: 21, img: ['1.jpg','2.jpg', 'elitism.jpg', '3.jpg'], stock: 'Available', ua_price: 850, sizes: ['S', 'M', 'L'] },
+        { id: 22,slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 21, img: ['merch_1.jpg'], stock: 'sold out', ua_price: 850 },
         
         
         
@@ -1166,27 +1165,35 @@ function generateCardHTML(p, cur) {
     function updateUI() {
     const cur = document.getElementById('currencySelect').value;
     const country = document.getElementById('countrySelect').value;
-    const data = countryData[country];
-    const sub = cart.reduce((a, b) => a + (b.price * b.qty), 0);
+    
+    // Робимо копію об'єкта даних країни, щоб не перезаписувати оригінальну базу назавжди
+    const data = { ...countryData[country] };
+
+    // Якщо в кошику є товар з категорії 'equipment', міняємо доставку на 25 (або 22) євро
+    const hasEquipment = cart.some(item => item.cat === 'equipment');
+    if (hasEquipment) {
+        data.ship = 25; // Тут можна поставити 22 чи 25
+    }
+
+    const sub = cart.reduce((a, b) => a + (b.price * (b.qty || 1)), 0);
     const tax = 0;
     const total = sub + tax + data.ship;
-    document.getElementById('cart-count').innerText = cart.reduce((a, b) => a + b.qty, 0);
     
+    document.getElementById('cart-count').innerText = cart.reduce((a, b) => a + (b.qty || 1), 0);
+
     if(cart.length > 0) {
         document.getElementById('checkoutSection').style.display = 'block';
         document.getElementById('sub-val').innerText = symbols[cur] + (sub * rates[cur]).toFixed(2);
         document.getElementById('tax-val').innerText = symbols[cur] + (tax * rates[cur]).toFixed(2);
         document.getElementById('ship-val').innerText = symbols[cur] + (data.ship * rates[cur]).toFixed(2);
         document.getElementById('total-val').innerText = symbols[cur] + (total * rates[cur]).toFixed(2);
-        
+
         document.getElementById('cartItems').innerHTML = cart.map((i, idx) => `
             <div style="padding:10px 0; border-bottom:1px solid #111; display:flex; justify-content:space-between; align-items:center;">
-                <div style="font-size:11px;"><b>${i.name}</b><div class="qty-controls"><button class="qty-btn" onclick="changeQty(${idx},-1)">-</button><span>${i.qty}</span><button class="qty-btn" onclick="changeQty(${idx},1)">+</button></div></div>
-                <span style="font-size:11px;">${symbols[cur]} ${(i.price * i.qty * rates[cur]).toFixed(2)}</span>
-            </div>`).join('');
-
-        // Усі перевірки PayPal звідси прибрано, бо нова кнопка в HTML сама викликає оплату при кліку!
-
+                <div style="font-size:11px;"><b>${i.name}</b><div class="qty-controls"><button class="qty-btn" onclick="changeQty(${idx},-1)">-</button><span>${i.qty || 1}</span><button class="qty-btn" onclick="changeQty(${idx},1)">+</button></div></div>
+                <span style="font-size:11px;">${symbols[cur]} ${(i.price * (i.qty || 1) * rates[cur]).toFixed(2)}</span>
+            </div>
+        `).join('');
     } else {
         document.getElementById('checkoutSection').style.display = 'none';
         document.getElementById('cartItems').innerHTML = "Cart is empty.";
@@ -1218,33 +1225,34 @@ function initPayPalMe() {
     if (itemsAmount <= 0) {
         alert("Cart is empty");
         return;
+        const hasEquipment = cart.some(item => item.cat === 'equipment');
+
+
     }
 
     // Шукаємо на сторінці рядок, де відображається поточна ціна доставки кошика (наприклад, €10.00 або €3.00)
     // Код перебирає всі елементи, щоб знайти той, який стоїть поруч зі словом "Shipping:" або має потрібний клас
+   // Шукаємо вартість доставки для звичайних товарів
     let shippingPrice = 0;
     const allElements = Array.from(document.querySelectorAll('*'));
-    
-    // Метод 1: Шукаємо елемент за текстом "Shipping:" та беремо сусіднє число
     const shippingNode = allElements.find(el => el.textContent.trim().startsWith('Shipping:'));
     if (shippingNode) {
-        // Забираємо лише цифри та крапку з цього рядка (наприклад з "Shipping: €10.00" витягне 10.00)
         shippingPrice = parseFloat(shippingNode.innerText.replace('Shipping:', '').replace(/[^\d.]/g, '')) || 0;
     } else {
-        // Метод 2: Альтернативний пошук за класами (якщо у тебе є класи на кшталт .shipping-cost)
         const altShipping = document.getElementById('shippingPrice') || document.querySelector('.shipping-cost') || document.querySelector('[style*="Shipping"] + div');
         if (altShipping) {
             shippingPrice = parseFloat(altShipping.innerText.replace(/[^\d.]/g, '')) || 0;
         }
     }
 
-    // Фінальний TOTAL — це чиста сума товарів + поточна доставка обраної країни
-    let totalAmount = itemsAmount + shippingPrice;
-    const hasEquipment = cart.some(item => item.cat === 'equipment');
-if (hasEquipment) {
-    totalAmount += 22;
-}
+    // --- ПЕРЕВІРКА НА ЕКІПІРУВАННЯ ---
+   const hasEquipment = cart.some(item => item.cat === 'equipment');
 
+    // Якщо екіп — доставка стає рівно 22.00, ігноруючи все інше
+    let finalShipping = hasEquipment ? 22.00 : shippingPrice;
+
+    // Фінальний TOTAL — сума товарів + наша фінальна доставка
+    let totalAmount = itemsAmount + finalShipping;
     // 3. ОНОВЛЕННЯ ДАНИХ У МОДАЛЦІ ORDER REVIEW
     document.getElementById('reviewName').innerText = clientName;
     document.getElementById('reviewAddress').innerText = clientAddress;
@@ -1304,10 +1312,7 @@ function executeFinalPayment(clientName, clientAddress, amount) {
     const currentCartItems = [...cart];
     const p2pOrderId = 'P2P-' + Math.floor(100000 + Math.random() * 900000);
     const itemsListText = currentCartItems.map(item => `${item.name} (x${item.qty || 1})`).join(', ');
-    const hasEquipment = currentCartItems.some(item => item.cat === 'equipment');
-if (hasEquipment) {
-    amount += 22; // Додаємо вартість за 1 кг екіпу до загальної суми
-}
+   
 
     // СТВОРЮЄМО УНІВЕРСАЛЬНИЙ ОБ'ЄКТ (Для всіх функцій і шаблонів на сайті)
     const details = {
@@ -1486,11 +1491,7 @@ if (typeof countryData !== 'undefined' && countryData[selectedCountry]) {
     shippingPrice = totalWithShip > pureItems ? totalWithShip - pureItems : 0;
 }
 
-// ПЕРЕВІРКА НА ЕКІПІРУВАННЯ: якщо є екіп (1 кг), ставимо фіксовану вартість 20-25 EUR (наприклад, 22 EUR)
-const hasEquipment = currentItems.some(item => item.cat === 'equipment');
-if (hasEquipment) {
-    shippingPrice = Math.max(shippingPrice, 22);
-}
+
 
 // 3. Рахуємо точні суми для листа
 let pureItemsPrice = currentItems.reduce((sum, item) => {
@@ -1599,6 +1600,36 @@ function handleSearch() {
 }
  
  const grid = document.getElementById('grid') || document.querySelector('.grid') || document.querySelector('main') || document.body;
+
+
+ window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('add');
+
+    if (productId) {
+        // Шукаємо товар за його id у твоєму масиві products
+        const foundProduct = products.find(p => p.id == productId || p.slug === productId);
+        if (foundProduct) {
+            const existingIndex = cart.findIndex(item => item.id == foundProduct.id);
+            if (existingIndex > -1) {
+                cart[existingIndex].qty = (cart[existingIndex].qty || 1) + 1;
+            } else {
+                cart.push({ ...foundProduct, qty: 1 });
+            }
+
+            if (typeof updateUI === 'function') {
+                updateUI();
+            }
+
+            if (typeof toggleCart === 'function') {
+                toggleCart(true);
+            }
+
+            // Очищаємо URL від параметра `?add=...`
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    }
+});
     
     // Захищаємо всі змінні, щоб нічого не падало
     const orderData = (typeof details !== 'undefined' && details) ? details : {};
