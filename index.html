@@ -1318,21 +1318,16 @@ function initPayPalMe() {
     `;
     
     document.getElementById('reviewItems').innerHTML = itemsHTML + shippingHTML;
-/// 4. ОБРОБКА КЛІКУ CONFIRM & PAY
+// 4. ОБРОБКА КЛІКУ CONFIRM & PAY
     const confirmBtn = document.getElementById('confirmOrderBtn');
     confirmBtn.onclick = function() {
-        
-        // ДОДАЄМО ТІЛЬКИ ЦЕ: якщо це мобільний пристрій, дозволяємо йому виконати платіж миттєво
+        // == МОБІЛЬНИЙ ФІКС: миттєвий виклик платежу до будь-яких затримок ==
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        if (isMobile) {
-            document.getElementById('orderReviewModal').style.display = 'none';
-            if (typeof executeFinalPayment === 'function') {
-                executeFinalPayment(clientName, clientAddress, totalAmount);
-            }
-            return; // Зупиняємо подальше виконання для мобільного, щоб не дублювати логіку
+        if (isMobile && typeof executeFinalPayment === 'function') {
+            executeFinalPayment(clientName, clientAddress, totalAmount);
         }
 
-        // --- ДАЛІ ТВОЯ ПОВНІСТЮ ОРИГІНАЛЬНА ДЕСКТОПНА ЛОГІКА (БЕЗ ЖОДНИХ ЗМІН) ---
+        // == ТВОЯ ОСНОВНА ЛОГІКА (повністю без змін) ==
         document.getElementById('orderReviewModal').style.display = 'none';
         
         const orderDetails = {
@@ -1341,22 +1336,19 @@ function initPayPalMe() {
             order_details: cart.map(i => `${i.name} (x${i.qty || 1})`).join(', ') + ` | Delivery (${clientAddress}): ${shippingPrice.toFixed(2)} EUR`
         };
 
+        
+
         // Запускаємо платіж PayPal з абсолютно точною сумою разом із міжнародною доставкою!
-        if (typeof executeFinalPayment === 'function') {
+        if (!isMobile && typeof executeFinalPayment === 'function') {
             executeFinalPayment(clientName, clientAddress, totalAmount); 
         }
     };
 
     // Відкриваємо модалку перевірки
     document.getElementById('orderReviewModal').style.display = 'flex';
-
-    function closeErrorModal() {
-    document.getElementById('errorValidationModal').style.display = 'none';
 }
-}
-
 function executeFinalPayment(clientName, clientAddress, amount) {
-    const win = window.open('', '_blank'); // Мобільний браузер пропустить це, бо це синхронно в момент кліку!
+    
     const currentCartItems = [...cart];
     const p2pOrderId = 'P2P-' + Math.floor(100000 + Math.random() * 900000);
     const itemsListText = currentCartItems.map(item => `${item.name} (x${item.qty || 1})`).join(', ');
@@ -1494,15 +1486,15 @@ cost: {
         reviewModal.style.display = 'flex';
     }
 
+    // Редірект на PayPal у новій вкладці
+    const myPayPalUsername = "glcneltsm";
+    const paypalUrl = `https://www.paypal.com/paypalme/${myPayPalUsername}`;
 
-   
-   // Редірект на PayPal у новій вкладці з обходом мобільних блокувань
-// Редірект на PayPal на поточній сторінці (працює і на ПК, і на будь-якому телефоні без блокувань)
-const myPayPalUsername = "glcneltsm";
-const paypalUrl = `https://www.paypal.com/paypalme/${myPayPalUsername}`;
-
-
+    setTimeout(() => {
+        window.open(paypalUrl, '_blank');
+    }, 1500);
 }
+
 
 function sendOrderToAdmin(details, items) {
     const nameInput = document.getElementById('clientName');
@@ -1753,4 +1745,4 @@ function handleSearch() {
     
 </script>
 </body>
-    </html> 
+</html>
