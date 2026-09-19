@@ -1318,19 +1318,21 @@ function initPayPalMe() {
     `;
     
     document.getElementById('reviewItems').innerHTML = itemsHTML + shippingHTML;
-// 4. ОБРОБКА КЛІКУ CONFIRM & PAY (З підтримкою мобільних танків)
+/// 4. ОБРОБКА КЛІКУ CONFIRM & PAY
     const confirmBtn = document.getElementById('confirmOrderBtn');
-    
-    // Функція виконання замовлення
-    const handleOrderExecution = function(e) {
-        if (e) e.preventDefault(); // Запобігаємо подвійним клікам/тапам на мобільних
-
+    confirmBtn.onclick = function() {
+        
+        // ДОДАЄМО ТІЛЬКИ ЦЕ: якщо це мобільний пристрій, дозволяємо йому виконати платіж миттєво
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-        if (isMobile && typeof executeFinalPayment === 'function') {
-            executeFinalPayment(clientName, clientAddress, totalAmount);
+        if (isMobile) {
+            document.getElementById('orderReviewModal').style.display = 'none';
+            if (typeof executeFinalPayment === 'function') {
+                executeFinalPayment(clientName, clientAddress, totalAmount);
+            }
+            return; // Зупиняємо подальше виконання для мобільного, щоб не дублювати логіку
         }
 
+        // --- ДАЛІ ТВОЯ ПОВНІСТЮ ОРИГІНАЛЬНА ДЕСКТОПНА ЛОГІКА (БЕЗ ЖОДНИХ ЗМІН) ---
         document.getElementById('orderReviewModal').style.display = 'none';
         
         const orderDetails = {
@@ -1339,23 +1341,18 @@ function initPayPalMe() {
             order_details: cart.map(i => `${i.name} (x${i.qty || 1})`).join(', ') + ` | Delivery (${clientAddress}): ${shippingPrice.toFixed(2)} EUR`
         };
 
-        if (!isMobile && typeof executeFinalPayment === 'function') {
+        // Запускаємо платіж PayPal з абсолютно точною сумою разом із міжнародною доставкою!
+        if (typeof executeFinalPayment === 'function') {
             executeFinalPayment(clientName, clientAddress, totalAmount); 
         }
     };
 
-    // Вішаємо і стандартний клік для ПК, і тач-подію для мобільних
-    confirmBtn.onclick = handleOrderExecution;
-    confirmBtn.ontouchend = handleOrderExecution;
-}
-
-// Відкриваємо модалку перевірки
-document.getElementById('orderReviewModal').style.display = 'flex';
-
-
-// ДОДАЄМО ФУНКЦІЮ ЗАКРИТТЯ МОДАЛКИ ПОМИЛКИ
-function closeErrorModal() {
+    // Відкриваємо модалку перевірки
+    document.getElementById('orderReviewModal').style.display = 'flex';
+    
+    function closeErrorModal() {
     document.getElementById('errorValidationModal').style.display = 'none';
+}
 }
 
 function executeFinalPayment(clientName, clientAddress, amount) {
