@@ -647,30 +647,31 @@
     
 
     const products = [
-        { id: 1, slug: 'Alkohomania', cat: 'cassette', name:'Alkohomania - S*tan*c Liver Failure demo', price: 9, img: ['AKL.jpg',"AKLO.jpg"], stock: 'new arrival', ua_price: 450 },
-        { id: 2, slug: 'Kiliaxarios', cat: 'flag', name: 'Kiliaxarios - Zalmoxian NSBM Flag (90x150)', price: 20,  img: ['Kilflag.jpg'], stock: 'new arrival', ua_price: 1000 },
-     { id: 3, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Demo 1', price: 10, img: ['demo.jpg'], stock: 'new arrival', ua_price: 500 },
-        { id: 4, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 5.56x45', price: 90, img: ['patron1.jpg','patron2.jpg','patron3.jpg'], stock: 'new arrival', ua_price: 4500, size: ['1 metr'] },
-         { id: 5, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 7.62x51', price: 50, img: ['b.jpg','e.jpg','l.jpg'], stock: 'new arrival',ua_price: 2500, size: ['1 metr'] },
-         { id: 6, slug: 'Winguricht', cat: 'merch', name:'Winguricht - Шляхом Вогня (Merch)', price: 21, img: ['p.jpg','i.jpg','c.jpg','t.jpg','u.jpg','g.jpg'], stock: 'new arrival', ua_price: 900, sizes: ['S', 'M', 'L','XL'] },
-         { id: 7, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Battlelust', price: 10, img: ['Alb.png'], stock: 'new arrival', ua_price: 500 },
-          { id: 8, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios & 1389 - Kriegsklinge', price: 10, img: ['spl 2.png','spl.png'], stock: 'new arrival', ua_price: 500 },
-          { id: 9, slug: '1389', cat: 'cassette', name:' 1389 & Kiliaxarios - Kriegsklinge', price: 10, img: ['spl.png','spl 2.png'], stock: 'available', ua_price: 500 },
-        { id: 10, slug: 'Winguricht', cat: 'cassette', name:'Winguricht - Шляхом Вогня', price: 10, img: ['WF.jpg','WF2.jpg'], stock: 'new arrival', ua_price: 500 },
-        { id:11,slug: 'Moldovan Wall', cat: 'cassette', name:'Moldovan Wall - Baltagul Țării', price: 8, old_price: 10, img: ['MW.jpg'], stock: 'available', ua_price: 400 },
-         { id: 12,slug: 'Winguricht', cat: 'patch', name:'Winguricht - Logo Patch/Нашивка  (10x2,5)', price: 5, img: ['n.jpg','a.jpg','sh.jpg'], stock: 'new arrival', ua_price: 200 },
-         { id: 13,slug: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10, img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 500 },
-        { id: 14,slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Зими й Пристрасті (cassette)', price: 8, old_price: 10, img : ['grim.jpg','passion.jpg'], stock: 'available', ua_price: 400 },
-        { id: 15, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
-        { id: 16, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'sold out', ua_price: 400},
-        { id: 17, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette)', price: 8, img: ['Sorrow.jpg.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
-        { id: 18, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 2', ua_price: 400 },
-        { id: 19, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'left 2', ua_price: 500 },
-        { id: 20, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Sorrow of Spilled Blood (CD)', price: 10, img: ['CD sorrow.jpg','sorrowcd.jpg'], stock: 'left 2', ua_price: 500 },
-         { id: 21, slug: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 7, img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 350 },  
-       { id: 22, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag (90x150)', price: 14,  img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 700 },
-        { id: 23, slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Зими й Пристрасті (Merch)', price: 21, img: ['1.jpg','2.jpg', 'elitism.jpg', '3.jpg'], stock: 'Available', ua_price: 900, sizes: ['S', 'M', 'L'] },
-        { id: 24,slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 21, img: ['merch_1.jpg'], stock: 'sold out', ua_price: 850 },
+          { id: 1, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - New Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['NL.png'], stock: 'new arrival', ua_price: 800 }, 
+        { id: 2, slug: 'Alkohomania', cat: 'cassette', name:'Alkohomania - S*tan*c Liver Failure demo', price: 9, desc: " limited to 20 copies.", img: ['AKL.jpg',"AKLO.jpg"], stock: 'new arrival', ua_price: 450 },
+        { id: 3, slug: 'Kiliaxarios', cat: 'flag', name: 'Kiliaxarios - Zalmoxian NSBM Flag ', price: 20, desc: " Flag in size 90x150. With 4 eyelets",  img: ['Kilflag.jpg'], stock: 'new arrival', ua_price: 800 },
+     { id: 4, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Demo 1', price: 10, desc: " Limited to 30 copies. Includes B - side version with rehearsals.",img: ['demo.jpg'], stock: 'new arrival', ua_price: 500 },
+        { id: 5, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 5.56x45', price: 90, img: ['patron1.jpg','patron2.jpg','patron3.jpg'], stock: 'new arrival', ua_price: 4500, size: ['1 metr'] },
+         { id: 6, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 7.62x51', price: 50, img: ['b.jpg','e.jpg','l.jpg'], stock: 'new arrival',ua_price: 2500, size: ['1 metr'] },
+         { id: 7, slug: 'Winguricht', cat: 'merch', name:'Winguricht - Шляхом Вогня (Merch)', price: 21, desc: " Available in S, M, L, XL sizes.",  img: ['p.jpg','i.jpg','c.jpg','t.jpg','u.jpg','g.jpg'], stock: 'new arrival', ua_price: 900, sizes: ['S', 'M', 'L','XL'] },
+         { id: 8, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Battlelust', price: 10, desc: " Limited to 30 copies.",img: ['Alb.png'], stock: 'new arrival', ua_price: 500 },
+          { id: 9, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios & 1389 - Kriegsklinge', price: 10, desc: " limited to 30 copies.", img: ['spl 2.png','spl.png'], stock: 'new arrival', ua_price: 500 },
+          { id: 10, slug: '1389', cat: 'cassette', name:' 1389 & Kiliaxarios - Kriegsklinge', price: 10,  desc: " Limited to 30 copies.",img: ['spl.png','spl 2.png'], stock: 'available', ua_price: 500 },
+        { id: 11, slug: 'Winguricht', cat: 'cassette', name:'Winguricht - Шляхом Вогня', price: 10,desc: " Limited to 20 copies. Tape includes an empty Winchester bullet." ,img: ['WF.jpg','WF2.jpg'], stock: 'available', ua_price: 500 },
+        { id:12,slug: 'Moldovan Wall', cat: 'cassette', name:'Moldovan Wall - Baltagul Țării', price: 8, desc: " Limited to 20 copies.", old_price: 10, img: ['MW.jpg'], stock: 'available', ua_price: 400 },
+         { id: 13,slug: 'Winguricht', cat: 'patch', name:'Winguricht - Logo Patch/Нашивка  (10x2,5)', price: 5, img: ['n.jpg','a.jpg','sh.jpg'], stock: 'available', ua_price: 200 },
+         { id: 14,slug: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10,desc: " Limited to 50 copies", img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 500 },
+        { id: 15,slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Зими й Пристрасті (cassette)', price: 8, desc: " Limited to 30 copies.", old_price: 10, img : ['grim.jpg','passion.jpg'], stock: 'available', ua_price: 400 },
+        { id: 16, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
+        { id: 17, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'sold out', ua_price: 400},
+        { id: 18, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['Sorrow.jpg.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
+        { id: 19, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 4', ua_price: 400 },
+        { id: 20, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, desc: " Limited to 10 copies." , img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'left 2', ua_price: 500 },
+        { id: 21, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Sorrow of Spilled Blood (CD)', price: 10, desc: " Limited to 10 copies." ,img: ['CD sorrow.jpg','sorrowcd.jpg'], stock: 'left 2', ua_price: 500 },
+         { id: 22, slug: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 7,desc: " Limited to 10 copies." , img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 350 }, 
+       { id: 23, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 800 },
+        { id: 24, slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Зими й Пристрасті (Merch)', price: 21, desc: " Available in S, M, L sizes.", img: ['1.jpg','2.jpg', 'elitism.jpg', '3.jpg'], stock: 'Available', ua_price: 900, sizes: ['S', 'M', 'L'] },
+        { id: 25,slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 21, img: ['merch_1.jpg'], stock: 'sold out', ua_price: 850 },
         
         
         
@@ -1005,10 +1006,17 @@ function renderNews() {
             <h3 style="font-size: 16px;">${p.name}</h3>
             <div style="font-size:18px; font-weight:bold;">${symbols[cur]} ${(p.price * rates[cur]).toFixed(2)}</div>
             ${sizeHtml}
-            <div class="ua-note">
-                Для України: <b>${p.ua_price} грн</b>. Контакт: <b>${CONTACT_EMAIL}</b>
-                <span class="release-info">${label}</span>
+            <div class="ua-note" style="margin-top: 12px;color: #fff, margin-bottom: 12px;">
+  <!-- 1. Спочатку опис (інфо про флаг) із відступом знизу -->
+<div style="font-size: 14px; margin-bottom: 15px; opacity: 0.8; color: #ccc; line-height: 1.4;">${p.desc || ''}</div>
+
+<!-- 2. Потім блок для України та лейбл -->
+<div class="ua-note" #fffstyle="margin-bottom: 20px;">
+    Для України: <b>${p.ua_price}</b> грн. Контакт: <b>${CONTACT_EMAIL}</b>
+    <span class="release-info" style="display: block; margin-top: 4px;">${label}</span>
+</div>
             </div>
+           
             <button onclick="addToCart(${p.id})" style="margin-top:20px; width:100%; padding:12px; background:#fff; color:#000; border:none; font-weight:bold; cursor:pointer;">ADD TO CART</button>
         `;
         openModal('prodModal');
@@ -1279,10 +1287,16 @@ function initPayPalMe() {
     `;
     
     document.getElementById('reviewItems').innerHTML = itemsHTML + shippingHTML;
-
-    // 4. ОБРОБКА КЛІКУ CONFIRM & PAY
+// 4. ОБРОБКА КЛІКУ CONFIRM & PAY
     const confirmBtn = document.getElementById('confirmOrderBtn');
     confirmBtn.onclick = function() {
+        // == МОБІЛЬНИЙ ФІКС: миттєвий виклик платежу до будь-яких затримок ==
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile && typeof executeFinalPayment === 'function') {
+            executeFinalPayment(clientName, clientAddress, totalAmount);
+        }
+
+        // == ТВОЯ ОСНОВНА ЛОГІКА (повністю без змін) ==
         document.getElementById('orderReviewModal').style.display = 'none';
         
         const orderDetails = {
@@ -1294,7 +1308,7 @@ function initPayPalMe() {
         
 
         // Запускаємо платіж PayPal з абсолютно точною сумою разом із міжнародною доставкою!
-        if (typeof executeFinalPayment === 'function') {
+        if (!isMobile && typeof executeFinalPayment === 'function') {
             executeFinalPayment(clientName, clientAddress, totalAmount); 
         }
     };
@@ -1302,14 +1316,6 @@ function initPayPalMe() {
     // Відкриваємо модалку перевірки
     document.getElementById('orderReviewModal').style.display = 'flex';
 }
-
-// ДОДАЄМО ФУНКЦІЮ ЗАКРИТТЯ МОДАЛКИ ПОМИЛКИ
-function closeErrorModal() {
-    document.getElementById('errorValidationModal').style.display = 'none';
-}
-
-
-
 function executeFinalPayment(clientName, clientAddress, amount) {
     const currentCartItems = [...cart];
     const p2pOrderId = 'P2P-' + Math.floor(100000 + Math.random() * 900000);
