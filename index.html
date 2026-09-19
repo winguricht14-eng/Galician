@@ -50,6 +50,37 @@
 
     </script>
     <style>
+        @keyframes modalPopupSlower {
+    0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(15px); /* Ще трохи далі стартуємо */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Застосовуємо до модального вікна */
+#prodModal, .modal-overlay, .modal-content {
+    animation: modalPopupSlower 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+        
+        @keyframes smoothAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px); /* Легкий підйом знизу вгору */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Застосовуємо анімацію до твоїх карток товарів */
+.product-card, .item-card { /* Заміни .product-card на той клас, який у тебе відповідає за блок товару */
+    animation: smoothAppear 0.7s ease-out forwards;
+}
         @media (max-width: 768px) {
     /* Виправляємо головне лого, щоб не було стиснутим */
     .logo-img {
