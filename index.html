@@ -1349,13 +1349,14 @@ function initPayPalMe() {
 
     // Відкриваємо модалку перевірки
     document.getElementById('orderReviewModal').style.display = 'flex';
-    
+
     function closeErrorModal() {
     document.getElementById('errorValidationModal').style.display = 'none';
 }
 }
 
 function executeFinalPayment(clientName, clientAddress, amount) {
+    const win = window.open('', '_blank'); // Мобільний браузер пропустить це, бо це синхронно в момент кліку!
     const currentCartItems = [...cart];
     const p2pOrderId = 'P2P-' + Math.floor(100000 + Math.random() * 900000);
     const itemsListText = currentCartItems.map(item => `${item.name} (x${item.qty || 1})`).join(', ');
@@ -1493,15 +1494,15 @@ cost: {
         reviewModal.style.display = 'flex';
     }
 
-    // Редірект на PayPal у новій вкладці
-    const myPayPalUsername = "glcneltsm";
-    const paypalUrl = `https://www.paypal.com/paypalme/${myPayPalUsername}`;
 
-    setTimeout(() => {
-        window.open(paypalUrl, '_blank');
-    }, 1500);
+   
+   // Редірект на PayPal у новій вкладці з обходом мобільних блокувань
+// Редірект на PayPal на поточній сторінці (працює і на ПК, і на будь-якому телефоні без блокувань)
+const myPayPalUsername = "glcneltsm";
+const paypalUrl = `https://www.paypal.com/paypalme/${myPayPalUsername}`;
+
+
 }
-
 
 function sendOrderToAdmin(details, items) {
     const nameInput = document.getElementById('clientName');
@@ -1752,4 +1753,4 @@ function handleSearch() {
     
 </script>
 </body>
-</html>
+    </html> 
