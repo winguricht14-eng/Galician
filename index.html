@@ -455,9 +455,8 @@
 </head>
 <body>
     <section style="display: block; height: 1px; overflow: hidden; color: #111; font-size: 10px; padding: 0 5%;">
-    <h1>Galician Elitism — Black Metal Label & Webstore</h1>
-    <p>Official store of Galician Elitism & Winguricht 
-       Releases from Winguricht and others Underground. Worldwide shipping from Ukraine.</p>
+    <h1>Galician Elitism — Black Metal Label</h1>
+    <p>Official store of Galician Elitism </p>
 </section>
 
 <div id="splash-screen"><img src="galician.jpg.jpg" class="splash-logo"></div>
@@ -497,6 +496,14 @@
         </nav>
         <div id="bandDropdown" class="band-dropdown">
             <div class="band-link" onclick="filterBand('Winguricht')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Winguricht</div>
+              <div class="band-link" onclick="filterBand('Kiliaxarios')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Kiliaxarios</div>
+              <div class="band-link" onclick="filterBand('Inhul')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Inhul</div>
+                <div class="band-link" onclick="filterBand('Moldovan Wall')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Moldovan Wall</div>
+                 <div class="band-link" onclick="filterBand('Alkohomania')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Alkohomania </div>
+                  <div class="band-link" onclick="filterBand('1389')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> 1389 </div>
+                    <div class="band-link" onclick="filterBand('Dub Buk')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Dub Buk</div>
+                      <div class="band-link" onclick="filterBand('Nokturnal Mortum')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Nokturnal Mortum </div>
+                        <div class="band-link" onclick="filterBand('Сокира Перуна')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Сокира Перуна </div>
         </div>
     </div>
 </header>
@@ -678,31 +685,39 @@
     
 
     const products = [
-          { id: 1, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - New Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['NL.png'], stock: 'new arrival', ua_price: 800 }, 
-        { id: 2, slug: 'Alkohomania', cat: 'cassette', name:'Alkohomania - S*tan*c Liver Failure demo', price: 9, desc: " limited to 20 copies.", img: ['AKL.jpg',"AKLO.jpg"], stock: 'new arrival', ua_price: 450 },
-        { id: 3, slug: 'Kiliaxarios', cat: 'flag', name: 'Kiliaxarios - Zalmoxian NSBM Flag ', price: 20, desc: " Flag in size 90x150. With 4 eyelets",  img: ['Kilflag.jpg'], stock: 'new arrival', ua_price: 800 },
-     { id: 4, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Demo 1', price: 10, desc: " Limited to 30 copies. Includes B - side version with rehearsals.",img: ['demo.jpg'], stock: 'new arrival', ua_price: 500 },
-        { id: 5, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 5.56x45', price: 90, img: ['patron1.jpg','patron2.jpg','patron3.jpg'], stock: 'new arrival', ua_price: 4500, size: ['1 metr'] },
-         { id: 6, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 7.62x51', price: 50, img: ['b.jpg','e.jpg','l.jpg'], stock: 'new arrival',ua_price: 2500, size: ['1 metr'] },
-         { id: 7, slug: 'Winguricht', cat: 'merch', name:'Winguricht - Шляхом Вогня (Merch)', price: 21, desc: " Available in S, M, L, XL sizes.",  img: ['p.jpg','i.jpg','c.jpg','t.jpg','u.jpg','g.jpg'], stock: 'new arrival', ua_price: 900, sizes: ['S', 'M', 'L','XL'] },
-         { id: 8, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Battlelust', price: 10, desc: " Limited to 30 copies.",img: ['Alb.png'], stock: 'new arrival', ua_price: 500 },
-          { id: 9, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios & 1389 - Kriegsklinge', price: 10, desc: " limited to 30 copies.", img: ['spl 2.png','spl.png'], stock: 'new arrival', ua_price: 500 },
-          { id: 10, slug: '1389', cat: 'cassette', name:' 1389 & Kiliaxarios - Kriegsklinge', price: 10,  desc: " Limited to 30 copies.",img: ['spl.png','spl 2.png'], stock: 'available', ua_price: 500 },
-        { id: 11, slug: 'Winguricht', cat: 'cassette', name:'Winguricht - Шляхом Вогня', price: 10,desc: " Limited to 20 copies. Tape includes an empty Winchester bullet." ,img: ['WF.jpg','WF2.jpg'], stock: 'available', ua_price: 500 },
-        { id:12,slug: 'Moldovan Wall', cat: 'cassette', name:'Moldovan Wall - Baltagul Țării', price: 8, desc: " Limited to 20 copies.", old_price: 10, img: ['MW.jpg'], stock: 'available', ua_price: 400 },
-         { id: 13,slug: 'Winguricht', cat: 'patch', name:'Winguricht - Logo Patch/Нашивка  (10x2,5)', price: 5, img: ['n.jpg','a.jpg','sh.jpg'], stock: 'available', ua_price: 200 },
-         { id: 14,slug: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10,desc: " Limited to 50 copies", img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 500 },
-        { id: 15,slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Зими й Пристрасті (cassette)', price: 8, desc: " Limited to 30 copies.", old_price: 10, img : ['grim.jpg','passion.jpg'], stock: 'available', ua_price: 400 },
-        { id: 16, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
-        { id: 17, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'sold out', ua_price: 400},
-        { id: 18, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['Sorrow.jpg.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
-        { id: 19, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 4', ua_price: 400 },
-        { id: 20, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, desc: " Limited to 10 copies." , img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'left 2', ua_price: 500 },
-        { id: 21, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Sorrow of Spilled Blood (CD)', price: 10, desc: " Limited to 10 copies." ,img: ['CD sorrow.jpg','sorrowcd.jpg'], stock: 'left 2', ua_price: 500 },
-         { id: 22, slug: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 7,desc: " Limited to 10 copies." , img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 350 }, 
-       { id: 23, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 800 },
-        { id: 24, slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Зими й Пристрасті (Merch)', price: 21, desc: " Available in S, M, L sizes.", img: ['1.jpg','2.jpg', 'elitism.jpg', '3.jpg'], stock: 'Available', ua_price: 900, sizes: ['S', 'M', 'L'] },
-        { id: 25,slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 21, img: ['merch_1.jpg'], stock: 'sold out', ua_price: 850 },
+        { id: 1, slug: 'Nokturnal Mortum', cat: 'cd', name: 'Nokturnal Mortum - Lunar Poetry Digibook (CD)', price: 15, desc: " Catalog ID - OMCD27. ", img: ['NMCD.jpg','NMCD2.jpg'], stock: 'new arrival', ua_price: 800 },
+        { id: 2, slug: 'Nokturnal Mortum', cat: 'cassette', name: 'Nokturnal Mortum - Lunar Poetry (cassette)', price: 12, desc: " 2001, reissue. ", img: ['NMC.jpg','NMC2.jpg'], stock: 'new arrival', ua_price: 600 }, 
+        { id: 3, slug: 'Dub Buk', cat: 'cassette', name: 'Dub Buk - Русь Понад Усе! (cassette)', price: 12, desc: " Release year 2003 ", img: ['DBBC.jpg','DBBC2.jpg'], stock: 'new arrival', ua_price: 600 }, 
+         { id: 4, slug: 'Сокира Перуна', cat: 'cassette', name: 'Сокира Перуна - Перунова Рать (cassette)', price: 15, desc: " Release year 2003 ", img: ['SPF.jpg','SPB.jpg'], stock: 'new arrival', ua_price: 800 }, 
+        { id: 5, slug: 'Nokturnal Mortum', cat: 'patch', name: 'Nokturnal Mortum - Slavonic Brotherhood Patch', price: 7, desc: " Size - 7  x 10. , Embroidered on Velcro, Official. ", img: ['NMP2.png'], stock: 'new arrival', ua_price: 200 }, 
+         { id: 6, slug: 'Nokturnal Mortum', cat: 'patch', name: 'Nokturnal Mortum - Logo Patch', price: 7, desc: " Size - 11  x 4,5. Official ", img: ['NMP.png'], stock: 'new arrival', ua_price: 200 }, 
+        { id: 7, slug: 'Dub Buk', cat: 'patch', name: 'Dub Buk Symbols Patch', price: 7, desc: " Size - 7,7  x 11,5 ", img: ['DBB1.png'], stock: 'new arrival', ua_price: 200 }, 
+        { id: 8, slug: 'Dub Buk', cat: 'patch', name: 'Dub Buk Logo Patch', price: 7, desc: " Size - 11 x 7,5 ", img: ['SLB.png'], stock: 'new arrival', ua_price: 200 }, 
+         { id: 9, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - New Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['NL.png'], stock: 'new arrival', ua_price: 800 }, 
+        { id: 10, slug: 'Alkohomania', cat: 'cassette', name:'Alkohomania - S*tan*c Liver Failure demo', price: 9, desc: " limited to 20 copies.", img: ['AKL.jpg',"AKLO.jpg"], stock: 'new arrival', ua_price: 450 },
+        { id: 11, slug: 'Kiliaxarios', cat: 'flag', name: 'Kiliaxarios - Zalmoxian NSBM Flag ', price: 20, desc: " Flag in size 90x150. With 4 eyelets",  img: ['Kilflag.jpg'], stock: 'new arrival', ua_price: 800 },
+     { id: 12, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Demo 1', price: 10, desc: " Limited to 30 copies. Includes B - side version with rehearsals.",img: ['demo.jpg'], stock: 'new arrival', ua_price: 500 },
+        { id: 13, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 5.56x45', price: 90, img: ['patron1.jpg','patron2.jpg','patron3.jpg'], stock: 'new arrival', ua_price: 4500, size: ['1 metr'] },
+         { id: 14, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 7.62x51', price: 50, img: ['b.jpg','e.jpg','l.jpg'], stock: 'new arrival',ua_price: 2500, size: ['1 metr'] },
+         { id: 15, slug: 'Winguricht', cat: 'merch', name:'Winguricht - Шляхом Вогня (Merch)', price: 21, desc: " Available in S, M, L, XL sizes.",  img: ['p.jpg','i.jpg','c.jpg','t.jpg','u.jpg','g.jpg'], stock: 'new arrival', ua_price: 900, sizes: ['S', 'M', 'L','XL'] },
+         { id: 16, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Battlelust', price: 10, desc: " Limited to 30 copies.",img: ['Alb.png'], stock: 'new arrival', ua_price: 500 },
+          { id: 17, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios & 1389 - Kriegsklinge', price: 10, desc: " limited to 30 copies.", img: ['spl 2.png','spl.png'], stock: 'new arrival', ua_price: 500 },
+          { id: 18, slug: '1389', cat: 'cassette', name:' 1389 & Kiliaxarios - Kriegsklinge', price: 10,  desc: " Limited to 30 copies.",img: ['spl.png','spl 2.png'], stock: 'available', ua_price: 500 },
+        { id: 19, slug: 'Winguricht', cat: 'cassette', name:'Winguricht - Шляхом Вогня', price: 10,desc: " Limited to 20 copies. Tape includes an empty Winchester bullet." ,img: ['WF.jpg','WF2.jpg'], stock: 'available', ua_price: 500 },
+        { id:20,slug: 'Moldovan Wall', cat: 'cassette', name:'Moldovan Wall - Baltagul Țării', price: 8, desc: " Limited to 20 copies.", old_price: 10, img: ['MW.jpg'], stock: 'available', ua_price: 400 },
+         { id: 21,slug: 'Winguricht', cat: 'patch', name:'Winguricht - Logo Patch/Нашивка  (10x2,5)', price: 5, img: ['n.jpg','a.jpg','sh.jpg'], stock: 'available', ua_price: 200 },
+         { id: 22,slug: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10,desc: " Limited to 50 copies", img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 500 },
+        { id: 23,slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Зими й Пристрасті (cassette)', price: 8, desc: " Limited to 30 copies.", old_price: 10, img : ['grim.jpg','passion.jpg'], stock: 'available', ua_price: 400 },
+        { id: 24, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
+        { id: 25, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'sold out', ua_price: 400},
+        { id: 26, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['Sorrow.jpg.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
+        { id: 27, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 4', ua_price: 400 },
+        { id: 28, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, desc: " Limited to 10 copies." , img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'left 1', ua_price: 500 },
+        { id: 29, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Sorrow of Spilled Blood (CD)', price: 10, desc: " Limited to 10 copies." ,img: ['CD sorrow.jpg','sorrowcd.jpg'], stock: 'left 1', ua_price: 500 },
+         { id: 30, slug: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 7,desc: " Limited to 10 copies." , img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 350 }, 
+       { id: 31, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 800 },
+        { id: 32, slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Зими й Пристрасті (Merch)', price: 21, desc: " Available in S, M, L sizes.", img: ['1.jpg','2.jpg', 'elitism.jpg', '3.jpg'], stock: 'Available', ua_price: 900, sizes: ['S', 'M', 'L'] },
+        { id: 33 ,slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 21, img: ['merch_1.jpg'], stock: 'sold out', ua_price: 850 },
         
         
         
@@ -980,6 +995,7 @@ function renderNews() {
     `;
 }
 
+
     function generateCardHTML(p, cur) {
         let badgeClass = p.stock === 'sold out' ? 'sold-out' : (p.stock === 'new arrival' ? 'new-arrival' : (p.stock.includes('left') ? 'stock-left' : 'available'));
         let badgeText = p.stock.toUpperCase();
@@ -1008,7 +1024,15 @@ function renderNews() {
         
         let label = "Released by Galician Elitism";
         if (p.cat === 'cd') label = "Released by Kulturkampf Records";
+         if (p.cat === 'Nokturnal Mortum') label = "Released by Oriana Productions";
         else if (p.name.includes('Wiligut Prophecy')) label = "Released by Wiligut Prophecy";
+         else if (p.name.includes('Nokturnal Mortum')) label = "Released by Oriana Productions ";
+           else if (p.name.includes('Dub Buk') && p.cat === 'patch') label = "Released by Dub Buk Katafrakt Records";
+         else if (p.name.includes('Dub Buk')) label = "Released by Коловорот Records ";
+         else if (p.name.includes('Сокира Перуна')) label = "Self-released";
+         
+          
+        
 
         const images = Array.isArray(p.img) ? p.img : [p.img];
 
@@ -1588,7 +1612,9 @@ function filterCat(cat) {
     else { render(products.filter(p => p.cat === cat)); toggleBands(); } }
 
 
-    function filterBand(band) { render(products.filter(p => p.band === band)); }
+  function filterBand(band) { 
+    render(products.filter(p => p.slug && p.slug.toLowerCase() === band.toLowerCase())); 
+}
     function toggleBands() { document.getElementById('bandDropdown').classList.add('active'); }
     function hideBands() { document.getElementById('bandDropdown').classList.remove('active'); }
     function toggleCart(open = null) { 
