@@ -61,6 +61,59 @@
     }
 }
 
+.band-dropdown {
+    /* Зробимо його адаптивним для мобільних */
+    max-height: 70vh; /* Щоб воно займало максимум 70% висоти екрана телефону */
+    overflow-y: auto;  /* Додає вертикальний скрол, якщо елементів багато */
+    -webkit-overflow-scrolling: touch; /* Плавний скрол на iPhone/Android */
+    box-sizing: border-box;
+}
+.trust-badges-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #0b0b0b;
+    border-bottom: 1px solid #1a1a1a;
+    border-top: 1px solid #1a1a1a;
+    padding: 10px 15px;
+    font-family: monospace;
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    flex-wrap: wrap;
+}
+
+.trust-badges-bar i {
+    color: #fff;
+    margin-right: 5px;
+}
+
+.trust-badges-bar .divider {
+    color: #333;
+}
+
+/* Адаптивність для телефонів */
+@media (max-width: 768px) {
+    .trust-badges-bar {
+        font-size: 9px;
+        gap: 10px;
+        padding: 8px 5px;
+    }
+    .trust-badges-bar .divider {
+        display: none; /* На вузьких екранах ховаємо слеші, роблячи рядок компактнішим */
+    }
+}
+@keyframes cartPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); filter: brightness(1.5); }
+    100% { transform: scale(1); }
+}
+
+.cart-animate {
+    animation: cartPulse 0.4s ease-in-out;
+}
 /* Застосовуємо до модального вікна */
 #prodModal, .modal-overlay, .modal-content {
     animation: modalPopupSlower 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -451,6 +504,7 @@
         font-size: 12px !important; /* Трохи менший шрифт, щоб зручніше було гортати */
     }
 }
+
     </style>
 </head>
 <body>
@@ -493,6 +547,7 @@
             <a onclick="filterCat('patch')">Patches</a>
             <a onclick="filterCat('equipment')">Equipment</a>
             
+            
         </nav>
         <div id="bandDropdown" class="band-dropdown">
             <div class="band-link" onclick="filterBand('Winguricht')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Winguricht</div>
@@ -504,6 +559,16 @@
                     <div class="band-link" onclick="filterBand('Dub Buk')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Dub Buk</div>
                       <div class="band-link" onclick="filterBand('Nokturnal Mortum')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Nokturnal Mortum </div>
                         <div class="band-link" onclick="filterBand('Сокира Перуна')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Сокира Перуна </div>
+                        <div class="trust-badges-bar">
+
+
+
+
+   
+                            
+
+
+
         </div>
     </div>
 </header>
@@ -1205,6 +1270,14 @@ function generateCardHTML(p, cur) {
         const p = products.find(x => x.id === id);
         const selectedSize = document.getElementById('sizeSelect') ? document.getElementById('sizeSelect').value : null;
         const cartKey = selectedSize ? `${id}-${selectedSize}` : id;
+        // Знаходимо іконку кошика або її контейнер у шапці
+const cartIcon = document.querySelector('.fa-cart-shopping').parentElement; 
+cartIcon.classList.add('cart-animate');
+
+// Прибираємо клас після завершення анімації, щоб можна було повторити
+setTimeout(() => {
+    cartIcon.classList.remove('cart-animate');
+}, 400);
         
         const existing = cart.find(x => x.cartKey === cartKey);
         if (existing) {
