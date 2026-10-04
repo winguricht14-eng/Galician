@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GALICIAN ELITISM | Official Store, Label, Winguricht </title>
+    <title>GALICIAN ELITISM | PROPAGANDA & LABEL </title>
 <meta name="description" content="Official store of Galician Elitism.">
-<meta name="keywords" content="Galician Elitism webstore, Winguricht, Galician Elitism website, ">
+<meta name="keywords" content="Galician Elitism label, Winguricht, Galician Elitism website, ">
 
 <meta property="og:title" content="GALICIAN ELITISM | Official Store">
 <meta property="og:description" content="Raw Black Metal, Black Metal.">
@@ -489,6 +489,45 @@
         width: 100%;
         position: relative;
     }
+    /* Контейнер для мініатюр під головним фото */
+.product-thumbnails {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Маленька рамка-прев'ю */
+.thumb-item {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+    background: #000;
+}
+
+.thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Ефект при наведенні або коли мініатюра активна (обрана) */
+.thumb-item:hover {
+    opacity: 1;
+    border-color: #777;
+}
+
+.thumb-item.active-thumb {
+    opacity: 1;
+    border-color: #fff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
 }
 
 /* Спеціально для дуже вузьких екранів (менше 400px) */
@@ -502,6 +541,114 @@
     }
     .news-card p {
         font-size: 12px !important; /* Трохи менший шрифт, щоб зручніше було гортати */
+    }
+}
+/* --- СТИЛІ ГАЛЕРЕЇ ПРЕВ'Ю (UI/UX PRO) --- */
+.modal-image-container {
+    width: 100%;
+    background: #000;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+#modalMainProductImage {
+    width: 100%;
+    max-height: 380px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.product-thumbnails {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.thumb-item {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.2s ease;
+    background: #000;
+}
+
+.thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumb-item:hover {
+    opacity: 0.9;
+    border-color: #777;
+}
+
+.thumb-item.active-thumb {
+    opacity: 1 !important;
+    border-color: #fff !important;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+
+}
+@media (max-width: 768px) {
+    #bandDropdown {
+        display: flex !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 15px;
+        padding: 8px 10px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Прячем скроллбар для эстетики */
+    #bandDropdown::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Каждый элемент не сжимается и держит строку */
+    #bandDropdown .band-link {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+}
+@media (max-width: 768px) {
+    #bandDropdown {
+        display: flex !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 15px;
+        padding: 8px 12px;
+        max-width: 100%;
+        box-sizing: border-box;
+        
+        /* Робимо правий край з легким затемненням/градієнтом, що сигналізує про скрол */
+        background: linear-gradient(90deg, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%) !important;
+        position: relative;
+    }
+
+    /* Прибираємо стандартний скроллбар */
+    #bandDropdown::-webkit-scrollbar {
+        display: none;
+    }
+
+    #bandDropdown .band-link {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
     }
 }
 
@@ -559,6 +706,14 @@
                     <div class="band-link" onclick="filterBand('Dub Buk')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Dub Buk</div>
                       <div class="band-link" onclick="filterBand('Nokturnal Mortum')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Nokturnal Mortum </div>
                         <div class="band-link" onclick="filterBand('Сокира Перуна')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Сокира Перуна </div>
+                         <div class="band-link" onclick="filterBand('Kraujo Reichas')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Kraujo Reichas </div>
+                          <div class="band-link" onclick="filterBand('Rampage')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Rampage </div>
+                           <div class="band-link" onclick="filterBand('Ostland')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Ostland </div>
+                           <div class="band-link" onclick="filterBand('Elderly Woods')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Elderly Woods </div>
+                             <div class="band-link" onclick="filterBand('Celestial Sunrise')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Celestial Sunrise </div>
+                              <div class="band-link" onclick="filterBand('SiaubaSS')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> SiaubaSS </div>
+                           
+                           
                         <div class="trust-badges-bar">
 
 
@@ -677,6 +832,7 @@
     <button id="confirmOrderBtn" style="flex: 1; background: #fff; color: #000; border: none; padding: 12px; cursor: pointer; font-family: monospace; text-transform: uppercase; font-weight: bold; font-size: 11px; letter-spacing: 1px;">
         Confirm & Pay <i class="fa fa-arrow-right"></i>
     </button>
+    
 </div>
 <button onclick="document.getElementById('orderReviewModal').style.display='none'; cart = []; if(typeof updateUI === 'function') updateUI(); if(typeof toggleCart === 'function') toggleCart(false);" 
         style="width: 100%; margin-top: 15px; background: #111; color: #888; border: 1px solid #292929; padding: 12px; cursor: pointer; font-family: monospace; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; transition: 0.3s;"
@@ -704,10 +860,9 @@
         <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; margin-top: 0;">
             Regards, Galician Elitism
         </p>
-        
-        <button onclick="closeErrorModal()" style="width: 100%; background: #fff; color: #000; border: none; padding: 14px; cursor: pointer; font-family: monospace; font-weight: bold; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; transition: 0.3s;">
-            Return & Fill Info
-        </button>
+      <button onclick="closeInformationRequiredModal()" style="width: 100%; background: #fff; color: #000; border: none; padding: 14px; cursor: pointer; font-family: monospace; font-weight: bold; text-transform: uppercase; font-size: 12px; letter-spacing: 2px;">
+    RETURN & FILL INFO
+</button>
         
     </div>
 </div>
@@ -749,46 +904,49 @@
 
     
 
-    const products = [    { id: 1, slug: 'Ostland', cat: 'cassette', name: 'Ostland - Lebensraum (cassette)', price: 9, desc: " Catalog ID - F.G.P. 023. ", img: ['O.jpg','O2.jpg'], stock: 'new arrival', ua_price: 450 }, 
-           { id: 2, slug: 'SiaubaSS', cat: 'cassette', name: 'Ostland/Thuleanischer Krieg/SiaubaSS/DarkneSS - The Beasts of Northern Europe split (cassette)', price: 9, desc: " Catalog ID - F.G.P. 020. ", img: ['US.jpg','US2.jpg'], stock: 'new arrival', ua_price: 450 }, 
-                { id: 3, slug: 'Kraujo Reichas', cat: 'cassette', name: 'Kraujo Reichas - Raudonojo Maro Seselyje (cassette)', price: 9, desc: " Catalog ID - F.G.P. 017. ", img: ['KD.jpg','KD2.jpg'], stock: 'new arrival', ua_price: 450 }, 
-         { id: 4, slug: 'Celestial Sunrise', cat: 'cassette', name: 'Celestial Sunrise - Cosmic Horizontal Terror (cassette)', price: 9, desc: " Catalog ID - F.G.P. 016. ", img: ['CS.jpg','CS2.jpg'], stock: 'new arrival', ua_price: 450 },
-        { id: 5, slug: 'Rampage', cat: 'cassette', name: 'Rampage - False Prophet Muhammad (cassette)', price: 9, desc: " Catalog ID - F.G.P. 014. ", img: ['R.jpg','R2.jpg'], stock: 'new arrival', ua_price: 450 },
-          { id: 6, slug: 'Kraujo Reichas', cat: 'cassette', name: 'Kraujo Reichas/A.Mond Split (cassette)', price: 9, desc: " Catalog ID - F.G.P. 011. ", img: ['KA.jpg','KA2.jpg'], stock: 'new arrival', ua_price: 450 },
-     { id: 7, slug: 'Elderly Woods', cat: 'cassette', name: 'Elderly Woods - Winter Wonderland (cassette)', price: 9, desc: " Catalog ID - F.G.P. 009. ", img: ['EW.jpg','E2.jpg'], stock: 'new arrival', ua_price: 450 },
-        { id: 8, slug: 'Nokturnal Mortum', cat: 'cd', name: 'Nokturnal Mortum - Lunar Poetry Digibook (CD)', price: 15, desc: " Catalog ID - OMCD27. ", img: ['NMCD.jpg','NMCD2.jpg'], stock: 'new arrival', ua_price: 800 },
-        { id: 9, slug: 'Nokturnal Mortum', cat: 'cassette', name: 'Nokturnal Mortum - Lunar Poetry (cassette)', price: 12, desc: " 2001, reissue. ", img: ['NMC.jpg','NMC2.jpg'], stock: 'new arrival', ua_price: 600 }, 
-        { id: 10, slug: 'Dub Buk', cat: 'cassette', name: 'Dub Buk - Русь Понад Усе! (cassette)', price: 12, desc: " Release year 2003 ", img: ['DBBC.jpg','DBBC2.jpg'], stock: 'new arrival', ua_price: 600 }, 
-         { id: 11, slug: 'Сокира Перуна', cat: 'cassette', name: 'Сокира Перуна - Перунова Рать (cassette)', price: 15, desc: " Release year 2003 ", img: ['SPF.jpg','SPB.jpg'], stock: 'new arrival', ua_price: 800 }, 
-        { id: 12, slug: 'Nokturnal Mortum', cat: 'patch', name: 'Nokturnal Mortum - Slavonic Brotherhood Patch', price: 7, desc: " Size - 7  x 10. , Embroidered on Velcro, Official. ", img: ['NMP2.png'], stock: 'new arrival', ua_price: 200 }, 
-         { id: 13, slug: 'Nokturnal Mortum', cat: 'patch', name: 'Nokturnal Mortum - Logo Patch', price: 7, desc: " Size - 11  x 4,5. Official ", img: ['NMP.png'], stock: 'new arrival', ua_price: 200 }, 
-        { id: 14, slug: 'Dub Buk', cat: 'patch', name: 'Dub Buk Symbols Patch', price: 7, desc: " Size - 7,7  x 11,5 ", img: ['DBB1.png'], stock: 'new arrival', ua_price: 200 }, 
-        { id: 15, slug: 'Dub Buk', cat: 'patch', name: 'Dub Buk Logo Patch', price: 7, desc: " Size - 11 x 7,5 ", img: ['SLB.png'], stock: 'new arrival', ua_price: 200 }, 
-         { id: 16, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - New Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['NL.png'], stock: 'new arrival', ua_price: 800 }, 
-        { id: 17, slug: 'Alkohomania', cat: 'cassette', name:'Alkohomania - S*tan*c Liver Failure demo', price: 9, desc: " limited to 20 copies.", img: ['AKL.jpg',"AKLO.jpg"], stock: 'new arrival', ua_price: 450 },
-        { id: 18, slug: 'Kiliaxarios', cat: 'flag', name: 'Kiliaxarios - Zalmoxian NSBM Flag ', price: 20, desc: " Flag in size 90x150. With 4 eyelets",  img: ['Kilflag.jpg'], stock: 'new arrival', ua_price: 800 },
-     { id: 19, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Demo 1', price: 10, desc: " Limited to 30 copies. Includes B - side version with rehearsals.",img: ['demo.jpg'], stock: 'new arrival', ua_price: 500 },
-        { id: 20, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 5.56x45', price: 90, img: ['patron1.jpg','patron2.jpg','patron3.jpg'], stock: 'new arrival', ua_price: 4500, size: ['1 metr'] },
-         { id: 21, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 7.62x51', price: 50, img: ['b.jpg','e.jpg','l.jpg'], stock: 'new arrival',ua_price: 2500, size: ['1 metr'] },
-         { id: 22, slug: 'Winguricht', cat: 'merch', name:'Winguricht - Шляхом Вогня (Merch)', price: 21, desc: " Available in S, M, L, XL sizes.",  img: ['p.jpg','i.jpg','c.jpg','t.jpg','u.jpg','g.jpg'], stock: 'new arrival', ua_price: 900, sizes: ['S', 'M', 'L','XL'] },
-         { id: 23, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Battlelust', price: 10, desc: " Limited to 30 copies.",img: ['Alb.png'], stock: 'new arrival', ua_price: 500 },
-          { id: 24, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios & 1389 - Kriegsklinge', price: 10, desc: " limited to 30 copies.", img: ['spl 2.png','spl.png'], stock: 'new arrival', ua_price: 500 },
-          { id: 25, slug: '1389', cat: 'cassette', name:' 1389 & Kiliaxarios - Kriegsklinge', price: 10,  desc: " Limited to 30 copies.",img: ['spl.png','spl 2.png'], stock: 'available', ua_price: 500 },
-        { id: 26, slug: 'Winguricht', cat: 'cassette', name:'Winguricht - Шляхом Вогня', price: 10,desc: " Limited to 20 copies. Tape includes an empty Winchester bullet." ,img: ['WF.jpg','WF2.jpg'], stock: 'available', ua_price: 500 },
-        { id:27,slug: 'Moldovan Wall', cat: 'cassette', name:'Moldovan Wall - Baltagul Țării', price: 10, desc: " Limited to 20 copies.", img: ['MW.jpg'], stock: 'available', ua_price: 500 },
-         { id: 28,slug: 'Winguricht', cat: 'patch', name:'Winguricht - Logo Patch/Нашивка  (10x2,5)', price: 5, img: ['n.jpg','a.jpg','sh.jpg'], stock: 'available', ua_price: 200 },
-         { id: 29,slug: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10,desc: " Limited to 50 copies", img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 500 },
-        { id: 30,slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Зими й Пристрасті (cassette)', price: 10, desc: " Limited to 30 copies.",  img : ['grim.jpg','passion.jpg'], stock: 'available', ua_price:500 },
-        { id: 31, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
-        { id: 32, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'sold out', ua_price: 400},
-        { id: 33, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['Sorrow.jpg.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
-        { id: 34, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 4', ua_price: 400 },
-        { id: 35, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, desc: " Limited to 10 copies." , img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'left 1', ua_price: 500 },
-        { id: 36, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Sorrow of Spilled Blood (CD)', price: 10, desc: " Limited to 10 copies." ,img: ['CD sorrow.jpg','sorrowcd.jpg'], stock: 'left 1', ua_price: 500 },
-         { id: 37, slug: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 7,desc: " Limited to 10 copies." , img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 350 }, 
-       { id: 38, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 800 },
-        { id: 39, slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Зими й Пристрасті (Merch)', price: 21, desc: " Available in S, M, L sizes.", img: ['1.jpg','2.jpg', 'elitism.jpg', '3.jpg'], stock: 'Available', ua_price: 900, sizes: ['S', 'M', 'L'] },
-        { id: 40 ,slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 21, img: ['merch_1.jpg'], stock: 'sold out', ua_price: 850 },
+    const products = [   
+           { id: 1, slug: 'Nokturnal Mortum', cat: 'cd', name: 'Nokturnal Mortum - Біль  Digibook (CD)', price: 24, desc: " Catalog ID - OMCD33. ", img: ['BCD.jpg','BCD2.jpg'], stock: 'new arrival', ua_price: 1200 },
+         { id: 2, slug: 'Nokturnal Mortum', cat: 'cassette', name: 'Nokturnal Mortum - Біль (cassette)', price: 24, desc: " Catalog ID - OMMC33. ", img: ['NMB.jpg','NMB2.jpg'], stock: 'new arrival', ua_price: 1200 },
+         { id: 3, slug: 'Ostland', cat: 'cassette', name: 'Ostland - Lebensraum (cassette)', price: 9, desc: " Catalog ID - F.G.P. 023. ", img: ['O.jpg','O2.jpg'], stock: 'new arrival', ua_price: 450 }, 
+           { id: 4, slug: 'SiaubaSS', cat: 'cassette', name: 'Ostland/Thuleanischer Krieg/SiaubaSS/DarkneSS - The Beasts of Northern Europe split (cassette)', price: 9, desc: " Catalog ID - F.G.P. 020. ", img: ['US.jpg','US2.jpg'], stock: 'new arrival', ua_price: 450 }, 
+                { id: 5, slug: 'Kraujo Reichas', cat: 'cassette', name: 'Kraujo Reichas - Raudonojo Maro Seselyje (cassette)', price: 9, desc: " Catalog ID - F.G.P. 017. ", img: ['KD.jpg','KD2.jpg'], stock: 'new arrival', ua_price: 450 }, 
+         { id: 6, slug: 'Celestial Sunrise', cat: 'cassette', name: 'Celestial Sunrise - Cosmic Horizontal Terror (cassette)', price: 9, desc: " Catalog ID - F.G.P. 016. ", img: ['CS.jpg','CS2.jpg'], stock: 'new arrival', ua_price: 450 },
+        { id: 7, slug: 'Rampage', cat: 'cassette', name: 'Rampage - False Prophet Muhammad (cassette)', price: 9, desc: " Catalog ID - F.G.P. 014. ", img: ['R.jpg','R2.jpg'], stock: 'new arrival', ua_price: 450 },
+          { id: 8, slug: 'Kraujo Reichas', cat: 'cassette', name: 'Kraujo Reichas/A.Mond Split (cassette)', price: 9, desc: " Catalog ID - F.G.P. 011. ", img: ['KA.jpg','KA2.jpg'], stock: 'new arrival', ua_price: 450 },
+     { id: 9, slug: 'Elderly Woods', cat: 'cassette', name: 'Elderly Woods - Winter Wonderland (cassette)', price: 9, desc: " Catalog ID - F.G.P. 009. ", img: ['EW.jpg','E2.jpg'], stock: 'new arrival', ua_price: 450 },
+        { id: 10, slug: 'Nokturnal Mortum', cat: 'cd', name: 'Nokturnal Mortum - Lunar Poetry Digibook (CD)', price: 15, desc: " Catalog ID - OMCD27. ", img: ['NMCD.jpg','NMCD2.jpg'], stock: 'new arrival', ua_price: 800 },
+        { id: 11, slug: 'Nokturnal Mortum', cat: 'cassette', name: 'Nokturnal Mortum - Lunar Poetry (cassette)', price: 12, desc: " 2001, reissue. ", img: ['NMC.jpg','NMC2.jpg'], stock: 'new arrival', ua_price: 600 }, 
+        { id: 12, slug: 'Dub Buk', cat: 'cassette', name: 'Dub Buk - Русь Понад Усе! (cassette)', price: 12, desc: " Release year 2003 ", img: ['DBBC.jpg','DBBC2.jpg'], stock: 'new arrival', ua_price: 600 }, 
+         { id: 13, slug: 'Сокира Перуна', cat: 'cassette', name: 'Сокира Перуна - Перунова Рать (cassette)', price: 15, desc: " Release year 2003 ", img: ['SPF.jpg','SPB.jpg'], stock: 'new arrival', ua_price: 800 }, 
+        { id: 14, slug: 'Nokturnal Mortum', cat: 'patch', name: 'Nokturnal Mortum - Slavonic Brotherhood Patch', price: 7, desc: " Size - 7  x 10. , Embroidered on Velcro, Official. ", img: ['NMP2.png'], stock: 'new arrival', ua_price: 200 }, 
+         { id: 15, slug: 'Nokturnal Mortum', cat: 'patch', name: 'Nokturnal Mortum - Logo Patch', price: 7, desc: " Size - 11  x 4,5. Official ", img: ['NMP.png'], stock: 'new arrival', ua_price: 200 }, 
+        { id: 16, slug: 'Dub Buk', cat: 'patch', name: 'Dub Buk Symbols Patch', price: 7, desc: " Size - 7,7  x 11,5 ", img: ['DBB1.png'], stock: 'new arrival', ua_price: 200 }, 
+        { id: 17, slug: 'Dub Buk', cat: 'patch', name: 'Dub Buk Logo Patch', price: 7, desc: " Size - 11 x 7,5 ", img: ['SLB.png'], stock: 'new arrival', ua_price: 200 }, 
+         { id: 18, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - New Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['NL.png'], stock: 'new arrival', ua_price: 800 }, 
+        { id: 19, slug: 'Alkohomania', cat: 'cassette', name:'Alkohomania - S*tan*c Liver Failure demo', price: 9, desc: " limited to 20 copies.", img: ['AKL.jpg',"AKLO.jpg"], stock: 'new arrival', ua_price: 450 },
+        { id: 20, slug: 'Kiliaxarios', cat: 'flag', name: 'Kiliaxarios - Zalmoxian NSBM Flag ', price: 20, desc: " Flag in size 90x150. With 4 eyelets",  img: ['Kilflag.jpg'], stock: 'new arrival', ua_price: 800 },
+     { id: 21, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Demo 1', price: 10, desc: " Limited to 30 copies. Includes B - side version with rehearsals.",img: ['demo.jpg'], stock: 'available', ua_price: 500 },
+        { id: 22, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 5.56x45', price: 90, img: ['patron1.jpg','patron2.jpg','patron3.jpg'], stock: 'available', ua_price: 4500, size: ['1 metr'] },
+         { id: 23, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 7.62x51', price: 50, img: ['b.jpg','e.jpg','l.jpg'], stock: 'available',ua_price: 2500, size: ['1 metr'] },
+         { id: 24, slug: 'Winguricht', cat: 'merch', name:'Winguricht - Шляхом Вогня (Merch)', price: 21, desc: " Available in S, M, L, XL sizes.",  img: ['p.jpg','i.jpg','c.jpg','t.jpg','u.jpg','g.jpg'], stock: 'available', ua_price: 900, sizes: ['S', 'M', 'L','XL'] },
+         { id: 25, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Battlelust', price: 10, desc: " Limited to 30 copies.",img: ['Alb.png'], stock: 'available', ua_price: 500 },
+          { id: 26, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios & 1389 - Kriegsklinge', price: 10, desc: " limited to 30 copies.", img: ['spl 2.png','spl.png'], stock: 'available', ua_price: 500 },
+          { id: 27, slug: '1389', cat: 'cassette', name:' 1389 & Kiliaxarios - Kriegsklinge', price: 10,  desc: " Limited to 30 copies.",img: ['spl.png','spl 2.png'], stock: 'available', ua_price: 500 },
+        { id: 28, slug: 'Winguricht', cat: 'cassette', name:'Winguricht - Шляхом Вогня', price: 10,desc: " Limited to 20 copies. Tape includes an empty Winchester bullet." ,img: ['WF.jpg','WF2.jpg'], stock: 'available', ua_price: 500 },
+        { id:29,slug: 'Moldovan Wall', cat: 'cassette', name:'Moldovan Wall - Baltagul Țării', price: 8, desc: " Limited to 20 copies.", old_price: 10, img: ['MW.jpg'], stock: 'available', ua_price: 400 },
+         { id: 30,slug: 'Winguricht', cat: 'patch', name:'Winguricht - Logo Patch/Нашивка  (10x2,5)', price: 5, img: ['n.jpg','a.jpg','sh.jpg'], stock: 'available', ua_price: 200 },
+         { id: 31,slug: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10,desc: " Limited to 50 copies", img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 500 },
+        { id: 32,slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Зими й Пристрасті (cassette)', price: 10, desc: " Limited to 30 copies.",  img : ['grim.jpg','passion.jpg'], stock: 'available', ua_price:500 },
+        { id: 33, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
+        { id: 34, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'sold out', ua_price: 400},
+        { id: 35, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['Sorrow.jpg.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
+        { id: 36, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 4', ua_price: 400 },
+        { id: 37, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, desc: " Limited to 10 copies." , img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'left 1', ua_price: 500 },
+        { id: 38, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Sorrow of Spilled Blood (CD)', price: 10, desc: " Limited to 10 copies." ,img: ['CD sorrow.jpg','sorrowcd.jpg'], stock: 'left 1', ua_price: 500 },
+         { id: 39, slug: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 7,desc: " Limited to 10 copies." , img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 350 }, 
+       { id: 40, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 800 },
+        { id: 41, slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Зими й Пристрасті (Merch)', price: 21, desc: " Available in S, M, L sizes.", img: ['1.jpg','2.jpg', 'elitism.jpg', '3.jpg'], stock: 'Available', ua_price: 900, sizes: ['S', 'M', 'L'] },
+        { id: 42 ,slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 21, img: ['merch_1.jpg'], stock: 'sold out', ua_price: 850 },
         
         
         
@@ -1101,13 +1259,13 @@ function renderNews() {
            else if (p.name.includes('Dub Buk') && p.cat === 'patch') label = "Released by Dub Buk Katafrakt Records";
          else if (p.name.includes('Dub Buk')) label = "Released by Коловорот Records ";
          else if (p.name.includes('Сокира Перуна')) label = "Self-released";
-          else if (p.name.includes('Rampage')) label = "Forgotten Graveyard Productions";
-          else if (p.name.includes('Celestial Sunrise')) label = "Forgotten Graveyard Productions";
-          else if (p.name.includes('Elderly Woods')) label = "Forgotten Graveyard Productions";
-          else if (p.name.includes('Kraujo Recihas')) label = "Forgotten Graveyard Productions";
-          else if (p.name.includes('SiaubaSS')) label = "Forgotten Graveyard Productions";
-          else if (p.name.includes('Ostland')) label = "Forgotten Graveyard Productions";
-           else if (p.name.includes('Kraujo Reichas/A.Mond Split')) label = "Forgotten Graveyard Productions";
+          else if (p.name.includes('Rampage')) label = "Released by Forgotten Graveyard Productions";
+          else if (p.name.includes('Celestial Sunrise')) label = "Released by Forgotten Graveyard Productions";
+          else if (p.name.includes('Elderly Woods')) label = "Released by Forgotten Graveyard Productions";
+          else if (p.name.includes('Kraujo Recihas')) label = "Released by Forgotten Graveyard Productions";
+          else if (p.name.includes('SiaubaSS')) label = "Released by Forgotten Graveyard Productions";
+          else if (p.name.includes('Ostland')) label = "Released by Forgotten Graveyard Productions";
+           else if (p.name.includes('Kraujo Reichas/A.Mond Split')) label = "Released by Forgotten Graveyard Productions";
          
           
         
@@ -1166,39 +1324,45 @@ function renderNews() {
         imgEl.src = images[currentSlide];
         resetZoom({ currentTarget: document.getElementById('mainZoomContainer') });
     }
-function generateCardHTML(p, cur) {
-    // Основний бейдж (SALE, SOLD OUT або AVAILABLE)
-    let badgeClass = p.stock === 'sold out' ? 'sold-out' : 
-                     (p.stock === 'sale' ? 'stock-left' : 'available');
+function generateProductModalContent(p) {
+    console.log("Отриманий об'єкт товару в модалці:", p);
     
-    let badgeText = p.stock.toUpperCase();
-    const displayImg = Array.isArray(p.img) ? p.img[0] : p.img;
-    
-    // Цінова логіка
-    let priceHTML = '';
-    const currentPrice = (p.price * rates[cur]).toFixed(2);
-    
-    if (p.old_price) {
-        const oldPrice = (p.old_price * rates[cur]).toFixed(2);
-        priceHTML = `<span style="text-decoration: line-through; opacity: 0.5; margin-right: 8px;">${symbols[cur]} ${oldPrice}</span> 
-                     <span style="color: #ff4444; font-weight: bold;">${symbols[cur]} ${currentPrice}</span>`;
-    } else {
-        priceHTML = `${symbols[cur]} ${currentPrice}`;
-    }
+    // Безпечно робимо масив картинок
+    const images = Array.isArray(p.img) ? p.img : [p.img];
+    console.log("Оброблений масив images:", images);
 
-    return `
-        <div class="product-card" onclick="${p.stock === 'sold out' ? '' : `viewProduct(${p.id})`}" style="${p.stock === 'sold out' ? 'opacity: 0.6; cursor: default;' : ''}">
-            <div class="badge-container">
-                <span class="status-badge ${badgeClass}">${badgeText}</span>
-                ${p.is_new ? '<span class="status-badge new-arrival">NEW ARRIVAL</span>' : ''}
-            </div>
-            <img src="${displayImg}" style="width:100%; height:200px; object-fit:contain;">
-            <div style="font-weight:bold; margin-top:15px; font-size:11px;">${p.name}</div>
-            <div style="margin-top:8px; font-size:12px;">
-                ${priceHTML} <span style="font-size: 10px; color: var(--accent);">/ ${p.ua_price} UAH</span>
-            </div>
+    // Головне велике фото
+    let html = `
+        <div class="modal-image-container">
+            <img id="modalMainProductImage" src="${images[0] || ''}" alt="${p.name || ''}" style="width: 100%; max-height: 380px; object-fit: contain; background: #000;">
         </div>
     `;
+
+    // Якщо картинок більше однієї — формуємо мініатюри через зручний цикл
+    if (images.length > 1) {
+        html += `<div class="product-thumbnails" style="display: flex; gap: 8px; margin-top: 12px; justify-content: center;">`;
+        
+        images.forEach((imgSrc, index) => {
+            const activeClass = index === 0 ? 'active-thumb' : '';
+            html += `
+                <div class="thumb-item ${activeClass}" 
+                     onclick="document.getElementById('modalMainProductImage').src='${imgSrc}'; console.log('Клік на мініатюру:', '${imgSrc}');"
+                     style="width: 45px; height: 45px; border: 1px solid #fff; cursor: pointer; background: #222; overflow: hidden;">
+                    <img src="${imgSrc}" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            `;
+        });
+        
+        html += `</div>`;
+    }
+
+    // Назва та ціна
+    html += `
+        <div style="color: #fff; margin-top: 15px; font-weight: bold; font-size: 14px;">${p.name || ''}</div>
+        <div style="color: #ccc; margin-top: 5px; font-size: 12px;">€ ${p.price}</div>
+    `;
+
+    return html;
 }
     function toggleZoom(e) {
         isZoomed = !isZoomed;
@@ -1252,7 +1416,31 @@ function generateCardHTML(p, cur) {
         currentUser = null;
         updateUserUI();
     }
+function closeInformationRequiredModal() {
+    // 1. Ховаємо всі можливі модальні вікна та оверлеї попереджень
+    const modals = document.querySelectorAll('.modal, [id*="Modal"], [id*="modal"]');
+    modals.forEach(m => {
+        // Залишаємо кошик відкритим, якщо треба, але закриваємо саме вікно помилки/попередження
+        if (m.id !== 'cartModal' && m.id !== 'mainModal') {
+            m.style.display = 'none';
+        }
+    });
 
+    // 2. Знімаємо ефект розмиття з фону/тела сторінки
+    document.body.style.filter = 'none';
+    document.body.style.backdropFilter = 'none';
+    document.body.style.overflow = 'auto';
+
+    // 3. Шукаємо оверлей бекдропу, якщо він є, і ховаємо його
+    const backdrops = document.querySelectorAll('.backdrop, .modal-backdrop, div[style*="blur"]');
+    backdrops.forEach(b => b.style.display = 'none');
+
+    // 4. Фокусуємось на полі введення імені
+    const nameInput = document.getElementById('clientName') || document.getElementById('fullName');
+    if (nameInput) {
+        nameInput.focus();
+    }
+}
     function updateUserUI() {
         const userBtn = document.getElementById('userBtn');
         if(currentUser) {
@@ -1457,6 +1645,7 @@ function initPayPalMe() {
     // Відкриваємо модалку перевірки
     document.getElementById('orderReviewModal').style.display = 'flex';
 }
+
 function executeFinalPayment(clientName, clientAddress, amount) {
     
     const currentCartItems = [...cart];
@@ -1597,12 +1786,22 @@ cost: {
     }
 
     // Редірект на PayPal у новій вкладці
-    const myPayPalUsername = "glcneltsm";
-    const paypalUrl = `https://www.paypal.com/paypalme/${myPayPalUsername}`;
+   // Редірект на PayPal (працює і на ПК, і на телефонах без блокувань)
+const myPayPalUsername = "glcneltsm";
+const paypalUrl = `https://www.paypal.com/paypalme/${myPayPalUsername}`;
 
-    setTimeout(() => {
-        window.open(paypalUrl, '_blank');
-    }, 1500);
+// Перевіряємо, чи це мобільний пристрій
+const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+if (isMobileDevice) {
+    // На телефоні одразу перенаправляємо поточну вкладку на PayPal, 
+    // оскільки замовлення вже сформоване і дані відправлені
+    window.location.href = paypalUrl;
+} else {
+    // На ПК відкриваємо у новій вкладці, як і хотілося
+    window.open(paypalUrl, '_blank');
+}
+   
 }
 
 
@@ -1690,6 +1889,7 @@ const finalTotalCalculated = (pureItemsPrice + shippingPrice).toFixed(2) + " EUR
         }
     });
 }
+
 function filterCat(cat) {
     if (cat === 'all') { 
     render(products); // Передаємо наш базовий масив 'products' у функцію 'render'
