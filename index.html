@@ -1775,12 +1775,14 @@ cost: {
 
     
              
-    }
-try {
-    await emailjs.send("service_yh588kt", "template_ft0cn75", customerOrderData);
-    console.log("Лист успішно надіслано!");
-} catch (err) {
-    console.error("Помилка відправки листа:", err);
+  // Отправляем письмо в фоне, не заставляя мобильный браузер ждать блокировку
+emailjs.send("service_yh588kt", "template_ft0cn75", customerOrderData)
+    .then((response) => {
+        console.log("Лист успішно надіслано!", response.status, response.text);
+    })
+    .catch((err) => {
+        console.error("Помилка відправки листа:", err);
+    });
 }
     // Дані для успішного чека на екрані
 // --- ПЕРЕМАЛЬОВУЄМО ВІКНО REVIEW НА МОНОХРОМНИЙ БІЛИЙ UI З ХЕЙЛОМ ---
