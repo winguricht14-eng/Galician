@@ -1662,7 +1662,7 @@ document.getElementById('checkoutBtn').addEventListener('click', async (e) => {
         alert('Будь ласка, введіть коректну електронну пошту!');
         return;
     }
-
+S
     // Візуальний індикатор для телефону (щоб користувач бачив, що щось відбувається)
     const btn = e.target;
     const originalText = btn.innerText;
@@ -1697,7 +1697,7 @@ document.getElementById('checkoutBtn').addEventListener('click', async (e) => {
 });
 }
 
-function executeFinalPayment(clientName, clientAddress, amount) {
+async function executeFinalPayment(clientName, clientAddress, amount) {
     
     const currentCartItems = [...cart];
     const p2pOrderId = 'P2P-' + Math.floor(100000 + Math.random() * 900000);
@@ -1773,12 +1773,15 @@ cost: {
 }
         };
 
-        // Заміни "template_CUSTOMER_ID" на ID твого нового шаблону для людей з кабінету EmailJS
-        emailjs.send("service_yh500kt", "template_ft0cn75", customerOrderData)
-            .then(() => console.log("Customer confirmation email successfully sent to " + clientEmail))
-            .catch((err) => console.error("Помилка відправки листа клієнту:", err));
+    
+             
     }
-
+try {
+    await emailjs.send("service_yh588kt", "template_ft0cn75", customerOrderData);
+    console.log("Лист успішно надіслано!");
+} catch (err) {
+    console.error("Помилка відправки листа:", err);
+}
     // Дані для успішного чека на екрані
 // --- ПЕРЕМАЛЬОВУЄМО ВІКНО REVIEW НА МОНОХРОМНИЙ БІЛИЙ UI З ХЕЙЛОМ ---
     const reviewModal = document.getElementById('orderReviewModal');
