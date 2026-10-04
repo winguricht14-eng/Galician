@@ -1834,11 +1834,11 @@ const paypalUrl = `https://www.paypal.com/paypalme/${myPayPalUsername}`;
 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 if (isMobileDevice) {
-    // На телефоні одразу перенаправляємо поточну вкладку на PayPal, 
-    // оскільки замовлення вже сформоване і дані відправлені
-    window.location.href = paypalUrl;
+    // Даємо 500 мс часу, щоб EmailJS встиг відправити дані на сервер перед редиректом
+    setTimeout(() => {
+        window.location.href = paypalUrl;
+    }, 500);
 } else {
-    // На ПК відкриваємо у новій вкладці, як і хотілося
     window.open(paypalUrl, '_blank');
 }
    
