@@ -1766,6 +1766,7 @@ emailjs.send("service_yh588kt", "template_ft0cn75", customerOrderData)
     })
     .catch((err) => {
         console.error("Помилка відправки листа:", err);
+        alert("Помилка EmailJS на мобільному: " + JSON.stringify(err));
     });
 }
     // Дані для успішного чека на екрані
