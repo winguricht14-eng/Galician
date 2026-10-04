@@ -1669,31 +1669,15 @@ S
     btn.innerText = 'ОБРОБКА...';
     btn.disabled = true;
 
-    try {
-        // 3. Відправляємо дані на сервер і ЖЕМО відповіді (await), 
-        // щоб мобільний браузер не закрив запит раніше часу
-        const response = await fetch('/api/create-order', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email, items: cart })
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            // 4. Тільки після успішної відповіді сервера перекидаємо на PayPal
-            window.location.href = data.paypalUrl; 
-        } else {
-            alert('Помилка сервера. Спробуйте ще раз.');
-            btn.innerText = originalText;
-            btn.disabled = false;
-        }
-    } catch (err) {
-        console.error('Мобільна помилка мережі:', err);
-        alert('Помилка зʼєднання з інтернетом.');
-        btn.innerText = originalText;
-        btn.disabled = false;
-    }
+try {
+    // Вікно успішного замовлення / перехід до оплати
+    executeFinalPayment(clientName, clientAddress, totalAmount);
+} catch (err) {
+    console.error('Помилка:', err);
+    alert('Сталася помилка при оформленні.');
+    btn.innerText = originalText;
+    btn.disabled = false;
+}
 });
 }
 
