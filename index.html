@@ -706,16 +706,15 @@
                     <div class="band-link" onclick="filterBand('Dub Buk')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Dub Buk</div>
                       <div class="band-link" onclick="filterBand('Nokturnal Mortum')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Nokturnal Mortum </div>
                         <div class="band-link" onclick="filterBand('Сокира Перуна')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Сокира Перуна </div>
-                         <div class="band-link" onclick="filterBand('Kraujo Reichas')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Kraujo Reichas </div>
-                          <div class="band-link" onclick="filterBand('Rampage')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Rampage </div>
-                           <div class="band-link" onclick="filterBand('Ostland')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Ostland </div>
-                           <div class="band-link" onclick="filterBand('Elderly Woods')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Elderly Woods </div>
-                             <div class="band-link" onclick="filterBand('Celestial Sunrise')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Celestial Sunrise </div>
-                              <div class="band-link" onclick="filterBand('SiaubaSS')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> SiaubaSS </div>
-                                 <div class="band-link" onclick="filterBand('Woods of Fallen')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Woods of Fallen </div>
+                         <div class="band-link" onclick="filterBand('Forgotten Graveyard Productions')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Forgotten Graveyard Productions </div>
+                          <div class="band-link" onclick="filterBand('Woods of Fallen')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Woods of Fallen </div>
                                      <div class="band-link" onclick="filterBand('Walknut')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Walknut </div>
                                       <div class="band-link" onclick="filterBand('Veil')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Veil </div>
                                        <div class="band-link" onclick="filterBand('Temnozor')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Темнозорь </div>
+                                        <div class="band-link" onclick="filterBand('Aksidava')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Aksidava </div>
+                                         <div class="band-link" onclick="filterBand('Răzbunare')"><i class="fa-solid fa-chevron-right" style="font-size:7px;"></i> Răzbunare </div>
+                                       
+
                                      
                            
                            
@@ -909,58 +908,63 @@
 
     
 
-    const products = [   
-
-             { id: 1, slug: 'Veil', cat: 'cd', name: 'Veil  - Sombre  (CD)', price: 12, desc: " Official Release  ", img: ['veil1.jpg','veil2.jpg','veil3.jpg'], stock: 'new arrival', ua_price: 600 },
-         { id: 2, slug: 'Woods of Fallen', cat: 'cd', name: 'Woods of Fallen - Wight Power  (CD)', price: 12, desc: " Official Release  ", img: ['wofcd.jpg','wofcd2.jpg','wofcd3.jpg'], stock: 'new arrival', ua_price: 600 },
-           { id: 3, slug: 'Walknut', cat: 'patch', name: 'Walknut - Logo (patch)', price: 7, desc: " 12×5 cm ", img: ['walknut.png','walknut.jpg'], stock: 'new arrival', ua_price: 350 },
-           { id: 4, slug: 'Temnozor', cat: 'patch', name: 'Темнозорь - Logo (patch)', price: 7, desc: " 12×7 cm ", img: ['temnozor.jpg'], stock: 'new arrival', ua_price: 350 },
-          { id: 5, slug: 'Woods of Fallen', cat: 'patch', name: 'Woods of Fallen - Wight Power cover (patch)', price: 7, desc: " Official patch ", img: ['wofb.jpg'], stock: 'new arrival', ua_price: 350 },
-          { id: 6, slug: 'Woods of Fallen', cat: 'patch', name: 'Woods of Fallen - Logo (patch)', price: 6, desc: " Official patch ", img: ['wofs.jpg'], stock: 'new arrival', ua_price: 300 },
-         { id: 7, slug: 'Woods of Fallen', cat: 'patch', name: 'Woods of Fallen - Wight Power (patch)', price: 6, desc: " Official patch ", img: ['wp.jpg'], stock: 'new arrival', ua_price: 300 },
-          { id: 8, slug: 'Woods of Fallen', cat: 'patch', name: 'Woods of Fallen - 𝔅𝔩𝔞𝔠𝔨 𝔐𝔢𝔱𝔞𝔩 Agains𝔱 Black Metal (patch)', price: 6, desc: " Official patch ", img: ['bma.jpg'], stock: 'sold out', ua_price: 300 },
-           { id: 9, slug: 'Nokturnal Mortum', cat: 'cd', name: 'Nokturnal Mortum - Біль  Digibook (CD)', price: 23, desc: " Catalog ID - OMCD33. ", img: ['BCD.jpg','BCD2.jpg'], stock: 'available', ua_price: 1150 },
-         { id: 10, slug: 'Nokturnal Mortum', cat: 'cassette', name: 'Nokturnal Mortum - Біль (cassette)', price: 24, desc: " Catalog ID - OMMC33. ", img: ['NMB.jpg','NMB2.jpg'], stock: 'available', ua_price: 1200 },
-         { id: 11, slug: 'Ostland', cat: 'cassette', name: 'Ostland - Lebensraum (cassette)', price: 9, desc: " Catalog ID - F.G.P. 023. ", img: ['O.jpg','O2.jpg'], stock: 'available', ua_price: 450 }, 
-           { id: 12, slug: 'SiaubaSS', cat: 'cassette', name: 'Ostland/Thuleanischer Krieg/SiaubaSS/DarkneSS - The Beasts of Northern Europe split (cassette)', price: 9, desc: " Catalog ID - F.G.P. 020. ", img: ['US.jpg','US2.jpg'], stock: 'available', ua_price: 450 }, 
-                { id: 13, slug: 'Kraujo Reichas', cat: 'cassette', name: 'Kraujo Reichas - Raudonojo Maro Seselyje (cassette)', price: 9, desc: " Catalog ID - F.G.P. 017. ", img: ['KD.jpg','KD2.jpg'], stock: 'available', ua_price: 450 }, 
-         { id: 14, slug: 'Celestial Sunrise', cat: 'cassette', name: 'Celestial Sunrise - Cosmic Horizontal Terror (cassette)', price: 9, desc: " Catalog ID - F.G.P. 016. ", img: ['CS.jpg','CS2.jpg'], stock: 'available', ua_price: 450 },
-        { id: 15, slug: 'Rampage', cat: 'cassette', name: 'Rampage - False Prophet Muhammad (cassette)', price: 9, desc: " Catalog ID - F.G.P. 014. ", img: ['R.jpg','R2.jpg'], stock: 'available', ua_price: 450 },
-          { id: 16, slug: 'Kraujo Reichas', cat: 'cassette', name: 'Kraujo Reichas/A.Mond Split (cassette)', price: 9, desc: " Catalog ID - F.G.P. 011. ", img: ['KA.jpg','KA2.jpg'], stock: 'available', ua_price: 450 },
-     { id: 17, slug: 'Elderly Woods', cat: 'cassette', name: 'Elderly Woods - Winter Wonderland (cassette)', price: 9, desc: " Catalog ID - F.G.P. 009. ", img: ['EW.jpg','E2.jpg'], stock: 'available', ua_price: 450 },
-        { id: 18, slug: 'Nokturnal Mortum', cat: 'cd', name: 'Nokturnal Mortum - Lunar Poetry Digibook (CD)', price: 15, desc: " Catalog ID - OMCD27. ", img: ['NMCD.jpg','NMCD2.jpg'], stock: 'available', ua_price: 800 },
-        { id: 19, slug: 'Nokturnal Mortum', cat: 'cassette', name: 'Nokturnal Mortum - Lunar Poetry (cassette)', price: 12, desc: " 2001, reissue. ", img: ['NMC.jpg','NMC2.jpg'], stock: 'available', ua_price: 600 }, 
-        { id: 20, slug: 'Dub Buk', cat: 'cassette', name: 'Dub Buk - Русь Понад Усе! (cassette)', price: 12, desc: " Release year 2003 ", img: ['DBBC.jpg','DBBC2.jpg'], stock: 'available', ua_price: 600 }, 
-         { id: 21, slug: 'Сокира Перуна', cat: 'cassette', name: 'Сокира Перуна - Перунова Рать (cassette)', price: 15, desc: " Release year 2003 ", img: ['SPF.jpg','SPB.jpg'], stock: 'available', ua_price: 800 }, 
-        { id: 22, slug: 'Nokturnal Mortum', cat: 'patch', name: 'Nokturnal Mortum - Slavonic Brotherhood Patch', price: 7, desc: " Size - 7  x 10. , Embroidered on Velcro, Official. ", img: ['NMP2.png'], stock: 'available', ua_price: 200 }, 
-         { id: 23, slug: 'Nokturnal Mortum', cat: 'patch', name: 'Nokturnal Mortum - Logo Patch', price: 7, desc: " Size - 11  x 4,5. Official ", img: ['NMP.png'], stock: 'available', ua_price: 200 }, 
-        { id: 24, slug: 'Dub Buk', cat: 'patch', name: 'Dub Buk Symbols Patch', price: 7, desc: " Size - 7,7  x 11,5 ", img: ['DBB1.png'], stock: 'available', ua_price: 200 }, 
-        { id: 25, slug: 'Dub Buk', cat: 'patch', name: 'Dub Buk Logo Patch', price: 7, desc: " Size - 11 x 7,5 ", img: ['SLB.png'], stock: 'available', ua_price: 200 }, 
-         { id: 26, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - New Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['NL.png'], stock: 'available', ua_price: 800 }, 
-        { id: 27, slug: 'Alkohomania', cat: 'cassette', name:'Alkohomania - S*tan*c Liver Failure demo', price: 9, desc: " limited to 20 copies.", img: ['AKL.jpg',"AKLO.jpg"], stock: 'available', ua_price: 450 },
-        { id: 28, slug: 'Kiliaxarios', cat: 'flag', name: 'Kiliaxarios - Zalmoxian NSBM Flag ', price: 20, desc: " Flag in size 90x150. With 4 eyelets",  img: ['Kilflag.jpg'], stock: 'available', ua_price: 800 },
-     { id: 29, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Demo 1', price: 10, desc: " Limited to 30 copies. Includes B - side version with rehearsals.",img: ['demo.jpg'], stock: 'available', ua_price: 500 },
-        { id: 30, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 5.56x45', price: 84, img: ['patron1.jpg','patron2.jpg','patron3.jpg'], stock: 'available', ua_price: 4200, size: ['1 metr'] },
-         { id: 31, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 7.62x51', price: 50, img: ['b.jpg','e.jpg','l.jpg'], stock: 'available',ua_price: 2500, size: ['1 metr'] },
-         { id: 32, slug: 'Winguricht', cat: 'merch', name:'Winguricht - Шляхом Вогня (Merch)', price: 21, desc: " Available in S, M, L, XL sizes.",  img: ['p.jpg','i.jpg','c.jpg','t.jpg','u.jpg','g.jpg'], stock: 'available', ua_price: 900, sizes: ['S', 'M', 'L','XL'] },
-         { id: 33, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Battlelust', price: 10, desc: " Limited to 30 copies.",img: ['Alb.png'], stock: 'available', ua_price: 500 },
-          { id: 34, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios & 1389 - Kriegsklinge', price: 10, desc: " limited to 30 copies.", img: ['spl 2.png','spl.png'], stock: 'available', ua_price: 500 },
-          { id: 35, slug: '1389', cat: 'cassette', name:' 1389 & Kiliaxarios - Kriegsklinge', price: 10,  desc: " Limited to 30 copies.",img: ['spl.png','spl 2.png'], stock: 'available', ua_price: 500 },
-        { id: 36, slug: 'Winguricht', cat: 'cassette', name:'Winguricht - Шляхом Вогня', price: 10,desc: " Limited to 20 copies. Tape includes an empty Winchester bullet." ,img: ['WF.jpg','WF2.jpg'], stock: 'available', ua_price: 500 },
-        { id:37,slug: 'Moldovan Wall', cat: 'cassette', name:'Moldovan Wall - Baltagul Țării', price: 10, desc: " Limited to 20 copies.",  img: ['MW.jpg'], stock: 'available', ua_price: 500 },
-         { id: 38,slug: 'Winguricht', cat: 'patch', name:'Winguricht - Logo Patch/Нашивка  (10x2,5)', price: 5, img: ['n.jpg','a.jpg','sh.jpg'], stock: 'available', ua_price: 200 },
-         { id: 39,slug: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10,desc: " Limited to 50 copies", img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 500 },
-        { id: 40,slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Зими й Пристрасті (cassette)', price: 10, desc: " Limited to 30 copies.",  img : ['grim.jpg','passion.jpg'], stock: 'available', ua_price:500 },
-        { id: 41, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
-        { id: 42, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'sold out', ua_price: 400},
-        { id: 43, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['Sorrow.jpg.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
-        { id: 44, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 4', ua_price: 400 },
-        { id: 45, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, desc: " Limited to 10 copies." , img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'left 1', ua_price: 500 },
-        { id: 46, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Sorrow of Spilled Blood (CD)', price: 10, desc: " Limited to 10 copies." ,img: ['CD sorrow.jpg','sorrowcd.jpg'], stock: 'left 1', ua_price: 500 },
-         { id: 47, slug: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 7,desc: " Limited to 10 copies." , img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 350 }, 
-       { id: 48, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 800 },
-        { id: 49, slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Зими й Пристрасті (Merch)', price: 21, desc: " Available in S, M, L sizes.", img: ['1.jpg','2.jpg', 'elitism.jpg', '3.jpg'], stock: 'Available', ua_price: 900, sizes: ['S', 'M', 'L'] },
-        { id: 50 ,slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 21, img: ['merch_1.jpg'], stock: 'sold out', ua_price: 850 },
+    const products = [  
+         { id: 1, slug: 'Răzbunare', cat: 'cassette', name: 'Răzbunare - Фиор Де Фок (cassette)', price: 9, desc: " Official release  ", img: ['rzbc.jpg','rzbc2.jpg',], stock: 'new arrival', ua_price: 450 }, 
+          { id: 2, slug: 'Răzbunare', cat: 'cd', name: 'Răzbunare - Coasa vremii nu cruță pe nime`! (CD)', price: 11, desc: " Catalog ID - DTB 730  ", img: ['rzba.jpg','rzba2.jpg',], stock: 'new arrival', ua_price: 550 },
+         { id: 3, slug: 'Aksidava', cat: 'cassette', name: 'Aksidava - Suprematie Si Duh Hiperboreu! (cassette)', price: 9, desc: " Official release ", img: ['aksi3.jpg','aksi33.jpg'], stock: 'new arrival', ua_price: 450 }, 
+           { id: 4, slug: 'Aksidava', cat: 'cassette', name: 'Aksidava - Demo II (cassette)', price: 9, desc: " Official release ", img: ['aksi2.jpg','aksi22.jpg'], stock: 'new arrival', ua_price: 450 },
+         { id: 5, slug: 'Aksidava', cat: 'cassette', name: 'Aksidava - Demo I (cassette)', price: 9, desc: " Official release ", img: ['aksi1.jpg','aksi11.jpg'], stock: 'new arrival', ua_price: 450 },
+     { id: 6, slug: 'Forgotten Graveyard Productions', cat: 'cassette', name: 'Thuleanischer Krieg - Ausrottung der S*m*t*n (cassette)', price: 9, desc: " Catalog ID - F.G.P. 010. ", img: ['tk.jpg','tk2.jpg'], stock: 'new arrival', ua_price: 450 },
+             { id: 7, slug: 'Veil', cat: 'cd', name: 'Veil  - Sombre  (CD)', price: 12, desc: " Official Release  ", img: ['veil1.jpg','veil2.jpg','veil3.jpg'], stock: 'available', ua_price: 600 },
+         { id: 8, slug: 'Woods of Fallen', cat: 'cd', name: 'Woods of Fallen - Wight Power  (CD)', price: 12, desc: " Official Release  ", img: ['wofcd.jpg','wofcd2.jpg','wofcd3.jpg'], stock: 'available', ua_price: 600 },
+           { id: 9, slug: 'Walknut', cat: 'patch', name: 'Walknut - Logo (patch)', price: 7, desc: " 12×5 cm ", img: ['walknut.png','walknut.jpg'], stock: 'available', ua_price: 350 },
+           { id: 10, slug: 'Temnozor', cat: 'patch', name: 'Темнозорь - Logo (patch)', price: 7, desc: " 12×7 cm ", img: ['temnozor.jpg'], stock: 'availablel', ua_price: 350 },
+          { id: 11, slug: 'Woods of Fallen', cat: 'patch', name: 'Woods of Fallen - Wight Power cover (patch)', price: 7, desc: " Official patch ", img: ['wofb.jpg'], stock: 'available', ua_price: 350 },
+          { id: 12, slug: 'Woods of Fallen', cat: 'patch', name: 'Woods of Fallen - Logo (patch)', price: 6, desc: " Official patch ", img: ['wofs.jpg'], stock: 'available', ua_price: 300 },
+         { id: 13, slug: 'Woods of Fallen', cat: 'patch', name: 'Woods of Fallen - Wight Power (patch)', price: 6, desc: " Official patch ", img: ['wp.jpg'], stock: 'available', ua_price: 300 },
+          { id: 14, slug: 'Woods of Fallen', cat: 'patch', name: 'Woods of Fallen - 𝔅𝔩𝔞𝔠𝔨 𝔐𝔢𝔱𝔞𝔩 Agains𝔱 Black Metal (patch)', price: 6, desc: " Official patch ", img: ['bma.jpg'], stock: 'sold out', ua_price: 300 },
+           { id: 15, slug: 'Nokturnal Mortum', cat: 'cd', name: 'Nokturnal Mortum - Біль  Digibook (CD)', price: 23, desc: " Catalog ID - OMCD33. ", img: ['BCD.jpg','BCD2.jpg'], stock: 'available', ua_price: 1150 },
+         { id: 16, slug: 'Nokturnal Mortum', cat: 'cassette', name: 'Nokturnal Mortum - Біль (cassette)', price: 24, desc: " Catalog ID - OMMC33. ", img: ['NMB.jpg','NMB2.jpg'], stock: 'available', ua_price: 1200 },
+         { id: 17, slug: 'Forgotten Graveyard Productions', cat: 'cassette', name: 'Ostland - Lebensraum (cassette)', price: 9, desc: " Catalog ID - F.G.P. 023. ", img: ['O.jpg','O2.jpg'], stock: 'available', ua_price: 450 }, 
+           { id: 18, slug: 'Forgotten Graveyard Productions', cat: 'cassette', name: 'Ostland/Thuleanischer Krieg/SiaubaSS/DarkneSS - The Beasts of Northern Europe split (cassette)', price: 9, desc: " Catalog ID - F.G.P. 020. ", img: ['US.jpg','US2.jpg'], stock: 'available', ua_price: 450 }, 
+                { id: 19, slug: 'Forgotten Graveyard Productions', cat: 'cassette', name: 'Kraujo Reichas - Raudonojo Maro Seselyje (cassette)', price: 9, desc: " Catalog ID - F.G.P. 017. ", img: ['KD.jpg','KD2.jpg'], stock: 'available', ua_price: 450 }, 
+         { id: 20, slug: 'Forgotten Graveyard Productions', cat: 'cassette', name: 'Celestial Sunrise - Cosmic Horizontal Terror (cassette)', price: 9, desc: " Catalog ID - F.G.P. 016. ", img: ['CS.jpg','CS2.jpg'], stock: 'available', ua_price: 450 },
+        { id: 21, slug: 'Forgotten Graveyard Productions', cat: 'cassette', name: 'Rampage - False Prophet Muhammad (cassette)', price: 9, desc: " Catalog ID - F.G.P. 014. ", img: ['R.jpg','R2.jpg'], stock: 'available', ua_price: 450 },
+          { id: 22, slug: 'Forgotten Graveyard Productions', cat: 'cassette', name: 'Kraujo Reichas/A.Mond Split (cassette)', price: 9, desc: " Catalog ID - F.G.P. 011. ", img: ['KA.jpg','KA2.jpg'], stock: 'available', ua_price: 450 },
+     { id: 23, slug: 'Forgotten Graveyard Productions', cat: 'cassette', name: 'Elderly Woods - Winter Wonderland (cassette)', price: 9, desc: " Catalog ID - F.G.P. 009. ", img: ['EW.jpg','E2.jpg'], stock: 'available', ua_price: 450 },
+        { id: 24, slug: 'Nokturnal Mortum', cat: 'cd', name: 'Nokturnal Mortum - Lunar Poetry Digibook (CD)', price: 15, desc: " Catalog ID - OMCD27. ", img: ['NMCD.jpg','NMCD2.jpg'], stock: 'available', ua_price: 800 },
+        { id: 25, slug: 'Nokturnal Mortum', cat: 'cassette', name: 'Nokturnal Mortum - Lunar Poetry (cassette)', price: 12, desc: " 2001, reissue. ", img: ['NMC.jpg','NMC2.jpg'], stock: 'available', ua_price: 600 }, 
+        { id: 26, slug: 'Dub Buk', cat: 'cassette', name: 'Dub Buk - Русь Понад Усе! (cassette)', price: 12, desc: " Release year 2003 ", img: ['DBBC.jpg','DBBC2.jpg'], stock: 'available', ua_price: 600 }, 
+         { id: 27, slug: 'Сокира Перуна', cat: 'cassette', name: 'Сокира Перуна - Перунова Рать (cassette)', price: 15, desc: " Release year 2003 ", img: ['SPF.jpg','SPB.jpg'], stock: 'available', ua_price: 800 }, 
+        { id: 28, slug: 'Nokturnal Mortum', cat: 'patch', name: 'Nokturnal Mortum - Slavonic Brotherhood Patch', price: 7, desc: " Size - 7  x 10. , Embroidered on Velcro, Official. ", img: ['NMP2.png'], stock: 'available', ua_price: 200 }, 
+         { id: 29, slug: 'Nokturnal Mortum', cat: 'patch', name: 'Nokturnal Mortum - Logo Patch', price: 7, desc: " Size - 11  x 4,5. Official ", img: ['NMP.png'], stock: 'available', ua_price: 200 }, 
+        { id: 30, slug: 'Dub Buk', cat: 'patch', name: 'Dub Buk Symbols Patch', price: 7, desc: " Size - 7,7  x 11,5 ", img: ['DBB1.png'], stock: 'available', ua_price: 200 }, 
+        { id: 31, slug: 'Dub Buk', cat: 'patch', name: 'Dub Buk Logo Patch', price: 7, desc: " Size - 11 x 7,5 ", img: ['SLB.png'], stock: 'available', ua_price: 200 }, 
+         { id: 32, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - New Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['NL.png'], stock: 'available', ua_price: 800 }, 
+        { id: 33, slug: 'Alkohomania', cat: 'cassette', name:'Alkohomania - S*tan*c Liver Failure demo', price: 9, desc: " limited to 20 copies.", img: ['AKL.jpg',"AKLO.jpg"], stock: 'available', ua_price: 450 },
+        { id: 34, slug: 'Kiliaxarios', cat: 'flag', name: 'Kiliaxarios - Zalmoxian NSBM Flag ', price: 20, desc: " Flag in size 90x150. With 4 eyelets",  img: ['Kilflag.jpg'], stock: 'available', ua_price: 800 },
+     { id: 35, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Demo 1', price: 9, desc: " Limited to 30 copies. Includes B - side version with rehearsals.",img: ['demo.jpg'], stock: 'available', ua_price: 450 },
+        { id: 36, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 5.56x45', price: 84, img: ['patron1.jpg','patron2.jpg','patron3.jpg'], stock: 'available', ua_price: 4200, size: ['1 metr'] },
+         { id: 37, slug: 'Patron Belt', cat: 'equipment', name:'Patron Belt 7.62x51', price: 50, img: ['b.jpg','e.jpg','l.jpg'], stock: 'available',ua_price: 2500, size: ['1 metr'] },
+         { id: 38, slug: 'Winguricht', cat: 'merch', name:'Winguricht - Шляхом Вогня (Merch)', price: 21, desc: " Available in S, M, L, XL sizes.",  img: ['p.jpg','i.jpg','c.jpg','t.jpg','u.jpg','g.jpg'], stock: 'available', ua_price: 900, sizes: ['S', 'M', 'L','XL'] },
+         { id: 39, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios - Battlelust', price: 10, desc: " Limited to 30 copies.",img: ['Alb.png'], stock: 'available', ua_price: 500 },
+          { id: 40, slug: 'Kiliaxarios', cat: 'cassette', name:'Kiliaxarios & 1389 - Kriegsklinge', price: 10, desc: " limited to 30 copies.", img: ['spl 2.png','spl.png'], stock: 'available', ua_price: 500 },
+          { id: 41, slug: '1389', cat: 'cassette', name:' 1389 & Kiliaxarios - Kriegsklinge', price: 10,  desc: " Limited to 30 copies.",img: ['spl.png','spl 2.png'], stock: 'available', ua_price: 500 },
+        { id: 42, slug: 'Winguricht', cat: 'cassette', name:'Winguricht - Шляхом Вогня', price: 10,desc: " Limited to 20 copies. Tape includes an empty Winchester bullet." ,img: ['WF.jpg','WF2.jpg'], stock: 'available', ua_price: 500 },
+        { id:43,slug: 'Moldovan Wall', cat: 'cassette', name:'Moldovan Wall - Baltagul Țării', price: 9, desc: " Limited to 20 copies.",  img: ['MW.jpg'], stock: 'available', ua_price: 450 },
+         { id: 44,slug: 'Winguricht', cat: 'patch', name:'Winguricht - Logo Patch/Нашивка  (10x2,5)', price: 5, img: ['n.jpg','a.jpg','sh.jpg'], stock: 'available', ua_price: 200 },
+         { id: 45,slug: 'Winguricht', cat: 'cassette', name:'Winguricht / SiaubaSS - 1000 years of Brotherhood (cassette)', price: 10,desc: " Limited to 50 copies", img: ['1split.jpg','2split.jpg'], stock: 'available', ua_price: 500 },
+        { id: 46,slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Зими й Пристрасті (cassette)', price: 10, desc: " Limited to 30 copies.",  img : ['grim.jpg','passion.jpg'], stock: 'available', ua_price:500 },
+        { id: 47, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
+        { id: 48, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'sold out', ua_price: 400},
+        { id: 49, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['Sorrow.jpg.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
+        { id: 50, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 4', ua_price: 400 },
+        { id: 51, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, desc: " Limited to 10 copies." , img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'left 1', ua_price: 500 },
+        { id: 52, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Sorrow of Spilled Blood (CD)', price: 10, desc: " Limited to 10 copies." ,img: ['CD sorrow.jpg','sorrowcd.jpg'], stock: 'left 1', ua_price: 500 },
+         { id: 53, slug: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 8,desc: " Limited to 10 copies." , img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 400 }, 
+       { id: 54, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 800 },
+        { id: 55, slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Зими й Пристрасті (Merch)', price: 21, desc: " Available in S, M, L sizes.", img: ['1.jpg','2.jpg', 'elitism.jpg', '3.jpg'], stock: 'Available', ua_price: 900, sizes: ['S', 'M', 'L'] },
+        { id: 56 ,slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 21, img: ['merch_1.jpg'], stock: 'sold out', ua_price: 850 },
         
         
         
@@ -1273,17 +1277,16 @@ function renderNews() {
            else if (p.name.includes('Dub Buk') && p.cat === 'patch') label = "Released by Dub Buk Katafrakt Records";
          else if (p.name.includes('Dub Buk')) label = "Released by Коловорот Records ";
          else if (p.name.includes('Сокира Перуна')) label = "Self-released";
-          else if (p.name.includes('Rampage')) label = "Released by Forgotten Graveyard Productions";
-          else if (p.name.includes('Celestial Sunrise')) label = "Released by Forgotten Graveyard Productions";
-          else if (p.name.includes('Elderly Woods')) label = "Released by Forgotten Graveyard Productions";
-          else if (p.name.includes('Kraujo Recihas')) label = "Released by Forgotten Graveyard Productions";
-          else if (p.name.includes('SiaubaSS')) label = "Released by Forgotten Graveyard Productions";
-          else if (p.name.includes('Ostland')) label = "Released by Forgotten Graveyard Productions";
-           else if (p.name.includes('Kraujo Reichas/A.Mond Split')) label = "Released by Forgotten Graveyard Productions";
+          else if (p.slug.includes('Forgotten Graveyard Productions')) label = "Released by Forgotten Graveyard Productions";
             else if (p.name.includes('Veil')) label = "Released by Stellar Winter Records";
               else if (p.name.includes('Woods of Fallen')) label = "Released by Stellar Winter Records";
                else if (p.name.includes('Walknut')) label = "Released by Stellar Winter Records";
                else if (p.name.includes('Темнозорь')) label = "Released by Stellar Winter Records";
+                else if (p.name.includes('Răzbunare') && p.cat === 'cassette')  label = "Released by Tranșeu Records";
+                 else if (p.name.includes('Răzbunare')) label = "Released by Darker than Black Records";
+                   else if (p.name.includes('Aksidava')) label = "Released by Tranșeu Records";
+                  
+           
            
            
          
