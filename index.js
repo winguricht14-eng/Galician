@@ -12,7 +12,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.post("/api/order-notification", async (req, res) => {
   try {
-    const { customer, items, totalAmount, shippingPrice, orderId, time } =
+    const { customer, items, totalAmount, shippingPrice, orderId, time, paymentMethod } =
       req.body;
 
     const itemsListHtml = items
