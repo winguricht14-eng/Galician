@@ -34,7 +34,7 @@ app.post("/api/order-notification", async (req, res) => {
         <p><b>Email:</b> ${customer.email}</p>
         <p><b>Phone number:</b> ${customer.phone}</p>
         <p><b>Full address:</b> ${customer.address}</p>
-        <p><b>Payment Method:</b> ${paymentMethod}</p>
+     <p><b>Payment Method:</b> ${paymentMethod}</p>
         <hr>
         <h3>Items:</h3>
         <ul>${itemsListHtml}</ul>
