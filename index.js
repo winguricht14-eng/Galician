@@ -26,7 +26,7 @@ app.post("/api/order-notification", async (req, res) => {
 
     // 1. ВІДПРАВКА ЛИСТА ТОБІ (Адміну)
     await resend.emails.send({
-      from: 'orders@galicianelitism.com',  
+      from: 'onboarding@resend.dev',  
   to: "galicianelitism@gmail.com",
   subject: `New order №${orderId}`,
       html: `
@@ -54,7 +54,7 @@ app.post("/api/order-notification", async (req, res) => {
 
       try {
         await resend.emails.send({
-          from: "orders@galicianelitism.com",
+          from: "onboarding@resend.dev",
           to: customer.email,
           subject: `Order Confirmed - ${orderId} [Galician Elitism]`,
           html: `
