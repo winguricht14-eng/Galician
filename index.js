@@ -24,7 +24,7 @@ app.post("/api/order-notification", async (req, res) => {
       )
       .join("");
 
-    // 1. ВІДПРАВКА ЛИСТА ТОБІ (Адміну) — Твій незмінний код
+    // 1. ВІДПРАВКА ЛИСТА ТОБІ (Адміну)
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "galicianelitism@gmail.com",
@@ -46,30 +46,34 @@ app.post("/api/order-notification", async (req, res) => {
       `,
     });
 
-    // 2. ВІДПРАВКА ПІДТВЕРДЖЕННЯ КЛІЄНТУ (працює на 100%, якщо є валідний email)
+    // 2. ВІДПРАВКА ПІДТВЕРДЖЕННЯ КЛІЄНТУ
     if (customer && customer.email && customer.email.includes("@") && customer.email !== "P2P Transfer") {
       const instructions = finalPaymentMethod.includes('PayPal')
         ? `<p><b>Next Step (PayPal):</b> Please complete your payment of <b>${totalAmount}</b> manually via our PayPal link.</p>`
         : `<p><b>Next Step (Bank Transfer / IBAN):</b> Your order has been placed with IBAN payment. We will send the bank transfer details to your email shortly.</p>`;
 
-      await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: customer.email,
-        subject: `Order Confirmed - ${orderId} [Galician Elitism]`,
-        html: `
-          <h2>ORDER CONFIRMED</h2>
-          <p>Thank you for your order! Your order <b>${orderId}</b> has been successfully generated.</p>
-          <hr>
-          <h3>Your Order Details:</h3>
-          <ul>${itemsListHtml}</ul>
-          <p><b>Shipping:</b> ${shippingPrice}</p>
-          <p><b>Total Amount:</b> ${totalAmount}</p>
-          <p><b>Payment Method:</b> ${finalPaymentMethod}</p>
-          <hr>
-          ${instructions}
-          <p><i>Hails, Galician Elitism</i></p>
-        `,
-      });
+      try {
+        await resend.emails.send({
+          from: "onboarding@resend.dev", // Якщо у тебе доданий власний домен в Resend, замість onboarding@resend.dev вкажи пошту виду info@твій_домен
+          to: customer.email,
+          subject: `Order Confirmed - ${orderId} [Galician Elitism]`,
+          html: `
+            <h2>ORDER CONFIRMED</h2>
+            <p>Thank you for your order! Your order <b>${orderId}</b> has been successfully generated.</p>
+            <hr>
+            <h3>Your Order Details:</h3>
+            <ul>${itemsListHtml}</ul>
+            <p><b>Shipping:</b> ${shippingPrice}</p>
+            <p><b>Total Amount:</b> ${totalAmount}</p>
+            <p><b>Payment Method:</b> ${finalPaymentMethod}</p>
+            <hr>
+            ${instructions}
+            <p><i>Hails, Galician Elitism</i></p>
+          `,
+        });
+      } catch (clientEmailError) {
+        console.error("Не вдалося надіслати лист клієнту (можливо, обмеження тестового режиму Resend):", clientEmailError.message);
+      }
     }
 
     res.status(200).json({ success: true });
