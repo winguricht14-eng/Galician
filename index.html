@@ -1829,41 +1829,43 @@ const selectedPaymentMethod = document.querySelector('input[name="payment_method
     document.getElementById('orderReviewModal').style.display = 'flex';
     // Повісимо слухач на кнопку замовлення/оплати
 
-document.getElementById('checkoutBtn').addEventListener('click', async (e) => {
-    console.log("1. Кнопка натиснута, код стартував!");
-    e.preventDefault();
-    // ... решта твого коду
-});
+// Повісимо слухач на кнопку замовлення/оплати
+const checkoutBtn = document.getElementById('checkoutBtn');
 
-    // 1. Примусово забираємо фокус з інпутів, щоб мобільна клавіатура сховалась і оновила значення
-    document.activeElement.blur();
+if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', async (e) => {
+        console.log("1. Кнопка натиснута, код стартував!");
+        e.preventDefault();
 
-    // 2. Чітко витягуємо значення пошти
-    const emailInput = document.getElementById('userEmail');
-    if (!emailInput) return;
-    
-    const email = emailInput.value.trim().toLowerCase();
+        // 1. Примусово забираємо фокус з інпутів
+        document.activeElement.blur();
 
-    // Перевірка чи пошта взагалі є
-    if (!email || !email.includes('@')) {
-        alert('Будь ласка, введіть коректну електронну пошту!');
-        return;
-    }
-S
-    // Візуальний індикатор для телефону (щоб користувач бачив, що щось відбувається)
-    const btn = e.target;
-    const originalText = btn.innerText;
-    btn.innerText = 'ОБРОБКА...';
-    btn.disabled = true;
+        // 2. Чітко витягуємо значення пошти
+        const emailInput = document.getElementById('userEmail');
+        if (!emailInput) return;
 
-try {
-    // Вікно успішного замовлення / перехід до оплати
-    executeFinalPayment(clientName, clientAddress, totalAmount);
-} catch (err) {
-    console.error('Помилка:', err);
-    alert('Сталася помилка при оформленні.');
-    btn.innerText = originalText;
-    btn.disabled = false;
+        const email = emailInput.value.trim().toLowerCase();
+
+        // Перевірка чи пошта взагалі є
+        if (!email || !email.includes('@')) {
+            alert('Будь ласка, введіть коректну електронну пошту!');
+            return;
+        }
+
+        // Візуальний індикатор для телефону
+        const btn = e.target;
+        const originalText = btn.innerText;
+
+        try {
+            // Вікно успішного замовлення / перехід до оплати
+            executeFinalPayment(clientName, clientAddress, totalAmount);
+        } catch (err) {
+            console.error('Помилка:', err);
+            alert('Сталася помилка при оформленні.');
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    });
 }
 }
 
@@ -2217,11 +2219,11 @@ function handleSearch() {
             <div style="font-size: 13px; line-height: 2;">
                 <div style="display: flex; justify-content: space-between;">
                     <span style="color: #444; text-transform: uppercase; letter-spacing: 1px;">Order Number:</span>
-                    <span style="color: #fff; font-family: monospace;">#${order.id.substring(0, 8)}</span>
+                  <span style="color: #fff; font-family: monospace;">#${(typeof order !== 'undefined' && order && order.id) ? order.id.substring(0, 8) : ((typeof orderData !== 'undefined' && orderData && orderData.orderId) ? orderData.orderId.substring(0, 8) : '--------')}</span>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <span style="color: #444; text-transform: uppercase; letter-spacing: 1px;">Payment Status:</span>
-                    <span style="color: #2ecc71; font-weight: bold;">● ${order.status}</span>
+                  <span style="color: #2ecc71; font-weight: bold;">• ${(typeof order !== 'undefined' && order && order.status) ? order.status : ((typeof orderData !== 'undefined' && orderData && orderData.status) ? orderData.status : 'Pending')}</span>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <span style="color: #444; text-transform: uppercase; letter-spacing: 1px;">Date:</span>
@@ -2233,20 +2235,20 @@ function handleSearch() {
 
             <div style="margin-bottom: 30px;">
                 <h4 style="font-size: 10px; color: #444; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">Shipping Details</h4>
-                <p style="font-size: 14px; color: #bbb; margin: 0;">${order.name}</p>
-                <p style="font-size: 14px; color: #bbb; margin: 0;">${order.email}</p>
+            ${(typeof order !== 'undefined' && order && order.id) ? order.id : ((typeof orderData !== 'undefined' && orderData && orderData.orderId) ? orderData.orderId : 'N/A')}
+         <p style="font-size: 14px; color: #bbb; margin: 0;">${(typeof order !== 'undefined' && order && order.email) ? order.email : ((typeof orderData !== 'undefined' && orderData && orderData.customer && orderData.customer.email) ? orderData.customer.email : 'No email')}</p>
             </div>
 
             <div style="margin-bottom: 30px;">
                 <h4 style="font-size: 10px; color: #444; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">Purchased Items</h4>
                 <p style="font-size: 14px; color: #fff; line-height: 1.6; background: #111; padding: 15px; border-left: 2px solid #fff;">
-                    ${order.items}
+                   ${(typeof order !== 'undefined' && order && order.items) ? order.items.map(i => `${i.name} — ${i.quantity || 1} шт.`).join('<br>') : ((typeof orderData !== 'undefined' && orderData && orderData.items) ? orderData.items.map(i => `${i.name} — ${i.quantity || 1} шт.`).join('<br>') : 'No items')}
                 </p>
             </div>
 
             <div style="display: flex; justify-content: space-between; align-items: baseline; background: #111; padding: 20px; border: 1px solid #222;">
                 <span style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase;">Total Paid:</span>
-                <span style="font-size: 20px; font-weight: bold;">${order.amount} EUR</span>
+           ${(typeof order !== 'undefined' && order && order.totalAmount) ? order.totalAmount : ((typeof orderData !== 'undefined' && orderData && orderData.totalAmount) ? orderData.totalAmount : 'EUR')}
             </div>
 
             <div style="text-align: center; margin-top: 40px;">
