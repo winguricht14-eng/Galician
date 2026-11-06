@@ -26,9 +26,9 @@ app.post("/api/order-notification", async (req, res) => {
 
     // 1. ВІДПРАВКА ЛИСТА ТОБІ (Адміну)
     await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: "galicianelitism@gmail.com",
-      subject: `New order №${orderId}`,
+      from: 'orders@galicianelitism.com',  
+  to: "galicianelitism@gmail.com",
+  subject: `New order №${orderId}`,
       html: `
         <h2>Order information №${orderId}</h2>
         <p><b>Time:</b> ${time}</p>
