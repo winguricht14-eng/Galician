@@ -682,6 +682,10 @@
         transform: rotateY(360deg);
     }
 }
+.user-controls > div:hover .nav-text {
+    opacity: 1;
+    max-width: 100px; /* Плавне розгортання тексту при наведенні */
+}
 
 }
 
@@ -697,21 +701,42 @@
 
 <header>
     <div class="top-row">
-        <select id="currencySelect" onchange="updateCurrency()" style="background:black; color:white; border:1px solid #333; font-size:10px;">
+        <select id="currencySelect" onchange="updateCurrency()" style="background:black; color:white; border:1px solid #333; font-size:13px;">
             <option value="EUR">€ EUR</option>
         
         </select>
         <div class="header-right">
-            <div class="search-box">
-                <input type="text" id="searchInput" class="search-input" placeholder="Search..." oninput="handleSearch()">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            </div>
-            <div class="user-controls" style="display:flex; gap:15px; font-size: 18px;">
-                <i class="fa-solid fa-circle-user" id="userBtn" onclick="openModal('authModal')" style="cursor:pointer;"></i>
-                <div onclick="toggleCart()" style="cursor:pointer; position:relative;">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span id="cart-count" style="position:absolute; top:-10px; right:-10px; background:#fff; color:#000; font-size:9px; padding:2px 5px; border-radius:50%; font-weight:bold;">0</span>
-                </div>
+            <div class="search-box" style="margin-right: 50x;">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search..." oninput="handleSearch()">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+</div><div class="user-controls" style="display: flex; gap: 30px; font-size: 40px; align-items: center;">
+    
+   <div class="user-controls" style="display: flex; gap: 15px; font-size: 18px; align-items: center;">
+    
+    <!-- Іконка профілю / реєстрації -->
+    <div onclick="openModal('authModal')" id="userBtn" style="cursor: pointer; display: flex; align-items: center; gap: 8px; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+        <i class="fa-solid fa-circle-user" style="font-size: 18px;"></i>
+        <span class="nav-text" style="font-size: 10px; letter-spacing: 1px; text-transform: uppercase; max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap; transition: max-width 0.3s ease, opacity 0.3s ease;">Account</span>
+    </div>
+
+    <!-- Іконка кошика -->
+    <div onclick="toggleCart()" style="cursor: pointer; position: relative; display: flex; align-items: center; gap: 8px; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+        <i class="fa-solid fa-cart-shopping" style="font-size: 18px;"></i>
+        <span class="nav-text" style="font-size: 10px; letter-spacing: 1px; text-transform: uppercase; max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap; transition: max-width 0.3s ease, opacity 0.3s ease;">Cart</span>
+        <span id="cart-count" style="position: absolute; top: -8px; right: -10px; background: #fff; color: #000; font-size: 9px; padding: 2px 5px; border-radius: 50%; font-weight: bold;">0</span>
+    </div>
+
+</div>
+
+<style>
+    /* Плавна поява тексту при наведенні на будь-який блок в іконках */
+    .user-controls > div:hover .nav-text {
+        max-width: 80px;
+        opacity: 1;
+    }
+</style>
+
+</div>
             </div>
         </div>
     </div>
@@ -843,7 +868,12 @@
         onmouseout="this.style.background='#fff'; this.style.color='#000';">
     PROCEED TO PAY
 </button>
-    
+  <button onclick="toggleCart(false)" 
+        onmouseover="this.style.background='#7e7e7e'; this.style.color='#fff';" 
+        onmouseout="this.style.background='none'; this.style.color='#fff';" 
+        style="width: 100%; padding: 12px; background: none; color: #fff; border: 1px solid #222; cursor: pointer; margin-top: 10px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: all 0.2s ease;">
+    RETURN
+</button>
       
 </div>
     
@@ -902,7 +932,7 @@
         </h3>
         
         <p style="font-size: 13px; line-height: 1.8; color: #bbb; margin-bottom: 15px; letter-spacing: 0.5px;">
-            Please provide your Full Name and FullDelivery Address before proceeding to payment. This ensures your package arrives at the correct destination.
+            Please provide your Full Name and Full Delivery Address before proceeding to payment. This ensures your package arrives at the correct destination.
         </p>
 
         <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; margin-top: 0;">
@@ -938,7 +968,7 @@
     </div>
    <div style="font-size: 15px;">
     Contact: galicianelitism@gmail.com<br>
-    GALICIAN ELITISM © all rights reserved 2026.
+    GALICIAN ELITISM © all rights reserved 2026 - 2027.
 </div>
 </footer>
 
@@ -1006,8 +1036,8 @@
         { id: 49, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['spirit.jpg','spiritcassette.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
         { id: 50, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Spirit of Ashes (cassette,Wiligut Prophecy)', price: 8, img: ['duh.jpg.jpg','wiligut.jpg'], stock: 'sold out', ua_price: 400},
         { id: 51, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette)', price: 8, desc: " Limited to 66 copies." ,img: ['Sorrow.jpg.jpg','whitetower.jpg'], stock: 'available', ua_price: 400 },
-        { id: 52, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 4', ua_price: 400 },
-        { id: 53, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, desc: " Limited to 10 copies." , img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'left 1', ua_price: 500 },
+        { id: 52, slug: 'Winguricht', cat: 'cassette', name: 'Winguricht - Sorrow of Spilled Blood (cassette,Wiligut Prophecy)', price: 8, img: ['wiliguts.jpg'], stock: 'left 3', ua_price: 400 },
+        { id: 53, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Spirit of Ashes (CD)', price: 10, desc: " Limited to 10 copies." , img: ['cd spirit.jpg','spiritcd.jpg'], stock: 'sold out', ua_price: 500 },
         { id: 54, slug: 'Winguricht', cat: 'cd', name: 'Winguricht - Sorrow of Spilled Blood (CD)', price: 10, desc: " Limited to 10 copies." ,img: ['CD sorrow.jpg','sorrowcd.jpg'], stock: 'left 1', ua_price: 500 },
          { id: 55, slug: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 8,desc: " Limited to 10 copies." , img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 400 }, 
        { id: 56, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 800 },
@@ -1308,8 +1338,11 @@ function renderNews() {
            const newArrivals = items.filter(p => p.stock === 'new arrival' || p.is_new === true);
             if (newArrivals.length > 0) {
                 htmlContent += `
-                    <div class="new-arrivals-hero">
-                        <div class="new-arrivals-title">⌖ NEW ARRIVALS ⌖</div>
+                    
+                        
+                      <div class="new-arrivals-title">
+    <span style="font-size: 2em; vertical-align: middle;">⌖</span> NEW ARRIVALS <span style="font-size: 2em; vertical-align: middle;">⌖</span>
+</div>
                         <div class="product-grid">
                             ${newArrivals.map(p => generateCardHTML(p, cur)).join('')}
                         </div>
@@ -1464,6 +1497,12 @@ function renderNews() {
             </div>
            
             <button onclick="addToCart(${p.id})" style="margin-top:20px; width:100%; padding:12px; background:#fff; color:#000; border:none; font-weight:bold; cursor:pointer;">ADD TO CART</button>
+            <button onclick="closeInformationRequiredModal()" 
+        onmouseover="this.style.background='#7e7e7e'; this.style.color='#fff';" 
+        onmouseout="this.style.background='none'; this.style.color='#fff';" 
+        style="width: 100%; padding: 12px; background: none; color: #fff; border: 1px solid #222; cursor: pointer; margin-top: 10px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: all 0.2s ease;">
+    BACK TO STORE
+</button>
         `;
         openModal('prodModal');
     }
@@ -1558,13 +1597,30 @@ function generateProductModalContent(p) {
     }
 
     function handleAuth() {
-        const email = document.getElementById('authEmail').value;
-        if(!email.includes('@')) { alert('Please enter a valid email'); return; }
-        currentUser = { email: email };
-        localStorage.setItem('ge_user', JSON.stringify(currentUser));
-        updateUserUI();
-        closeModal('authModal');
+    const nameInput = document.getElementById('clientName');
+    const emailInput = document.getElementById('authEmail');
+    
+    // Перевіряємо, чи існує поле імені і чи воно заповнене
+    if (!nameInput || !nameInput.value.trim()) {
+        alert('Please enter your name or handle.');
+        return;
     }
+    
+    const email = emailInput ? emailInput.value : '';
+    if (!email.includes('@')) {
+        alert('Please enter a valid email.');
+        return;
+    }
+    
+    currentUser = { 
+        email: email, 
+        name: nameInput.value.trim() 
+    };
+    
+    localStorage.setItem('ge_user', JSON.stringify(currentUser));
+    updateUserUI();
+    closeModal('authModal');
+}
 
     function logout() {
         localStorage.removeItem('ge_user');
@@ -1597,30 +1653,99 @@ function closeInformationRequiredModal() {
     }
 }
     function updateUserUI() {
-        const userBtn = document.getElementById('userBtn');
-        if(currentUser) {
-            userBtn.classList.add('user-logged');
-            document.getElementById('authContent').innerHTML = `
-                <span onclick="closeModal('authModal')" style="position:absolute; right:20px; top:10px; cursor:pointer;">✕</span>
-                <h3>WELCOME</h3>
-                <p style="font-size:12px; color:var(--accent);">${currentUser.email}</p>
-                <div style="border-top: 1px solid #222; margin: 20px 0; padding-top:10px;">
-                    <p style="font-size:10px;">Order History: empty</p>
+    const userBtn = document.getElementById('userBtn');
+    if (currentUser) {
+        userBtn.classList.add('user-logged');
+        const clientName = currentUser.name || 'Client';
+        
+        document.getElementById('authContent').innerHTML = `
+            <span onclick="closeModal('authModal')" style="position:absolute; right:20px; top:10px; cursor:pointer; font-size:14px; color:#666;">✕</span>
+            
+            <div style="text-align: left; padding: 5px 10px;">
+                <h3 style="letter-spacing: 3px; font-size: 13px; margin-bottom: 15px; color: #fff; border-bottom: 1px solid #222; padding-bottom: 8px;">MEMBER PORTAL</h3>
+                
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                    <div>
+                        <div style="font-size: 14px; font-weight: bold; color: #fff; margin-bottom: 3px; letter-spacing: 1px;">${clientName}</div>
+                        <div style="font-size: 11px; color: #777; font-family: monospace;">${currentUser.email}</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-size: 9px; background: #111; border: 1px solid #222; padding: 3px 6px; color: #aaa; letter-spacing: 1px;">ID: #GE-${Math.abs(hashCode(currentUser.email)) % 9000 + 1000}</span>
+                    </div>
                 </div>
-                <button onclick="logout()" style="width:100%; padding:10px; background:none; border:1px solid var(--danger); color:var(--danger); cursor:pointer;">LOGOUT</button>
-            `;
-        } else {
-            userBtn.classList.remove('user-logged');
-            document.getElementById('authContent').innerHTML = `
-                <span onclick="closeModal('authModal')" style="position:absolute; right:20px; top:10px; cursor:pointer;">✕</span>
-                <h3>RESERVIST ACCESS</h3>
-                <input type="email" id="authEmail" class="input-field" placeholder="Email">
-                <input type="password" id="authPass" class="input-field" placeholder="Password">
-                <button onclick="handleAuth()" id="authMainBtn" style="width:100%; padding:12px; background:#fff; color:#000; border:none; font-weight:bold; margin-top:10px;">LOGIN</button>
-                <span class="auth-toggle" onclick="toggleAuthMode()" id="authToggleBtn">Don't have an account? Register</span>
-            `;
+
+                <div style="background: #090909; border: 1px solid #1a1a1a; padding: 12px; margin-bottom: 15px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-bottom: 8px; border-bottom: 1px solid #151515; padding-bottom: 4px;">
+                        <span>Order Archive</span>
+                        <span>Status</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 11px; color: #bbb; padding: 4px 0;">
+                        <span>No active packages</span>
+                        <span style="color: #555; font-size: 10px;">--</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; font-size: 11px; color: #888; margin-bottom: 20px; padding: 0 4px;">
+                    <span>Active Cart:</span>
+                    <span style="color: #fff;" id="authCartCount">0 units</span>
+                </div>
+
+                <button onclick="logout()" style="width:100%; padding:11px; background:none; border:1px solid #333; color:#fff; cursor:pointer; font-size: 10px; letter-spacing: 2px;">LOGOUT</button>
+            </div>
+        `;
+        
+        const globalCartCount = document.getElementById('cart-count');
+        if (globalCartCount && document.getElementById('authCartCount')) {
+            document.getElementById('authCartCount').innerText = globalCartCount.innerText + ' units';
         }
+
+    } else {
+        userBtn.classList.remove('user-logged');
+        document.getElementById('authContent').innerHTML = `
+            <span onclick="closeModal('authModal')" style="position:absolute; right:20px; top:10px; cursor:pointer; font-size:14px; color:#666;">✕</span>
+            <h3 style="letter-spacing: 2px; font-size: 13px; margin-bottom: 15px; text-align:left; border-bottom:1px solid #222; padding-bottom:8px;">CUSTOMER REGISTRATION</h3>
+            <div id="authInputs" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;">
+                <input type="text" id="clientName" class="input-field" placeholder="Full Name / Handle" style="width:100%; padding:11px; background:#111; border:1px solid #222; color:#fff; font-size:11px; outline:none;">
+                <input type="email" id="authEmail" class="input-field" placeholder="Email Address" style="width:100%; padding:11px; background:#111; border:1px solid #222; color:#fff; font-size:11px; outline:none;">
+                <input type="password" id="authPass" class="input-field" placeholder="Password" style="width:100%; padding:11px; background:#111; border:1px solid #222; color:#fff; font-size:11px; outline:none;">
+            </div>
+            <button onclick="handleAuth()" id="authMainBtn" style="width:100%; padding:12px; background:#fff; color:#000; border:none; font-weight:bold; font-size:10px; letter-spacing:2px; cursor:pointer;">AUTHORIZE</button>
+        `;
     }
+}
+
+function handleAuth() {
+    // Ищем поле имени по ID или берем первый текстовый инпут в модалке
+    const nameInput = document.getElementById('clientName') || document.querySelector('#authInputs input[type="text"]');
+    const emailInput = document.getElementById('authEmail') || document.querySelector('#authInputs input[type="email"]');
+    
+    const clientName = nameInput && nameInput.value.trim() !== '' ? nameInput.value.trim() : 'Client';
+    const email = emailInput && emailInput.value.trim() !== '' ? emailInput.value.trim() : 'user@domain.com';
+    
+    if (!email.includes('@')) {
+        alert('Please enter a valid email.');
+        return;
+    }
+    
+    currentUser = { 
+        email: email, 
+        name: clientName 
+    };
+    
+    localStorage.setItem('ge_user', JSON.stringify(currentUser));
+    updateUserUI();
+    closeModal('authModal');
+}
+
+// Допоміжна маленька функція для генерації стабільного цифрового ID на основі пошти
+function hashCode(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = ((hash << 5) - hash) + str.charCodeAt(i);
+        hash |= 0;
+    }
+    return hash;
+}
 
     function addToCart(id) {
         const p = products.find(x => x.id === id);
@@ -1973,7 +2098,7 @@ async function executeFinalPayment(clientName, clientAddress, amount) {
                 </div>` :
                 `<div style="background: #111; border-left: 3px solid #eee; padding: 12px; margin-bottom: 20px; font-size: 11px; color: #aaa; border: 1px solid #222;">
                     <strong style="color: #fff; text-transform: uppercase;">Next Step (Bank Transfer / IBAN):</strong><br>
-                    Your order has been placed with <strong>IBAN payment</strong>. We will send the bank transfer details to your email.
+                    Your order has been placed with <strong> IBAN payment</strong>. We will send the bank transfer details to your email.
                 </div>`;
 
             const itemsHTML = currentItems.map(i => `
