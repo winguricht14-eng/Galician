@@ -257,6 +257,7 @@
         opacity: 1;
         transform: scale(1);
     }
+    
 }
         
         
@@ -685,7 +686,10 @@
 .user-controls > div:hover .nav-text {
     opacity: 1;
     max-width: 100px; /* Плавне розгортання тексту при наведенні */
+    
+    
 }
+
 
 }
 
@@ -1042,7 +1046,7 @@
          { id: 55, slug: 'Inhul', cat: 'cassette', name: 'Inhul - Цианідові Сни (cassette)', price: 8,desc: " Limited to 10 copies." , img: ['цианід.jpg','inh.jpg'], stock: 'Available', ua_price: 400 }, 
        { id: 56, slug: 'Winguricht', cat: 'flag', name: 'Winguricht - Old Logo Flag', price: 20, desc: " Flag in size 90x150.", img: ['flag.jpg','flag.jpg.jpg'], stock: 'AVAILABLE', ua_price: 800 },
         { id: 57, slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Зими й Пристрасті (Merch)', price: 21, desc: " Available in S, M, L sizes.", img: ['1.jpg','2.jpg', 'elitism.jpg', '3.jpg'], stock: 'Available', ua_price: 900, sizes: ['S', 'M', 'L'] },
-        { id: 58 ,slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 21, img: ['merch_1.jpg'], stock: 'sold out', ua_price: 850 },
+        { id: 58 ,slug: 'Winguricht', cat: 'merch', name: 'Winguricht - Spirit of Ashes (Merch)', price: 20, img: ['merch_1.jpg'], stock: 'new arrival',  desc: " First Winguricht's merch.", ua_price: 800 ,sizes: [ 'L',] },
         
         
         
@@ -1340,7 +1344,7 @@ function renderNews() {
                 htmlContent += `
                     
                         
-                      <div class="new-arrivals-title">
+                      <div class="new-arrivals-title"> 
     <span style="font-size: 1.5em; vertical-align: middle;">⌖</span> NEW ARRIVALS <span style="font-size: 1.5em; vertical-align: middle;">⌖</span>
 </div>
                         <div class="product-grid">
@@ -1352,7 +1356,10 @@ function renderNews() {
             }
         }
 
+
+
         const grouped = items.reduce((acc, obj) => {
+
             const key = obj.band || 'Other';
             if (!acc[key]) acc[key] = [];
             acc[key].push(obj);
@@ -1360,13 +1367,13 @@ function renderNews() {
         }, {});
 
         htmlContent += Object.keys(grouped).map(bandName => `
-            <section class="band-section">
-                <div class="band-title">${bandName}</div>
-                <div class="product-grid">
-                    ${grouped[bandName].map(p => generateCardHTML(p, cur)).join('')}
-                </div>
-            </section>
-        `).join('');
+    <section class="band-section" style="margin-top: 50px; display: block; position: relative;">
+        <div class="band-title" style="margin-bottom: 25px; font-size: 13px; letter-spacing: 2px;">${bandName}</div>
+        <div class="product-grid">
+            ${grouped[bandName].map(p => generateCardHTML(p, cur)).join('')}
+        </div>
+    </section>
+`).join('');
 
         grid.innerHTML = htmlContent;
     }
@@ -1748,39 +1755,70 @@ function hashCode(str) {
 }
 
     function addToCart(id) {
-        const p = products.find(x => x.id === id);
-        const selectedSize = document.getElementById('sizeSelect') ? document.getElementById('sizeSelect').value : null;
-        const cartKey = selectedSize ? `${id}-${selectedSize}` : id;
-        // Знаходимо іконку кошика або її контейнер у шапці
-const cartIcon = document.querySelector('.fa-cart-shopping').parentElement; 
-cartIcon.classList.add('cart-animate');
+    const p = products.find(x => x.id === id);
+    if (!p) return;
 
-// Прибираємо клас після завершення анімації, щоб можна було повторити
-setTimeout(() => {
-    cartIcon.classList.remove('cart-animate');
-}, 400);
-        
-        const existing = cart.find(x => x.cartKey === cartKey);
-        if (existing) {
-            existing.qty++;
-        } else {
-            cart.push({ 
-                ...p, 
-                qty: 1, 
-                cartKey: cartKey, 
-                selectedSize: selectedSize,
-                name: selectedSize ? `${p.name} [${selectedSize}]` : p.name 
-            });
-        }
-        updateUI(); toggleCart(true); closeModal('prodModal');
+    const selectedSize = document.getElementById('sizeSelect') ? document.getElementById('sizeSelect').value : null;
+    const cartKey = selectedSize ? `${id}-${selectedSize}` : id;
+
+    // 1. Додаємо товар у кошик за твоїм шаблоном
+    const existing = cart.find(x => x.cartKey === cartKey);
+    if (existing) {
+        existing.qty++;
+    } else {
+        cart.push({
+            ...p,
+            qty: 1,
+            cartKey: cartKey,
+            selectedSize: selectedSize,
+            name: selectedSize ? `${p.name} [${selectedSize}]` : p.name
+        });
     }
+    
+    updateUI();
+    if (typeof saveCart === 'function') saveCart();
+
+    // 2. МИТТЄВО закриваємо вікно товару (повертаємо на головну)
+    closeModal('prodModal');
+
+    // 3. Збуджуємо/рухаємо іконку кошика в шапці
+    const cartIconElement = document.querySelector('.fa-cart-shopping');
+    if (cartIconElement && cartIconElement.parentElement) {
+        const cartIcon = cartIconElement.parentElement;
+        cartIcon.classList.add('cart-animate');
+        setTimeout(() => {
+            cartIcon.classList.remove('cart-animate');
+        }, 400);
+    }
+
+    // 4. Шукаємо відповідну картку цього товару на головній і робимо їй статус ADDED
+    const productCard = document.querySelector(`.product-card[data-id="${id}"]`) || document.querySelector('.product-card');
+    if (productCard) {
+        const cardBtn = productCard.querySelector('button') || productCard;
+        // Можемо коротко підсвітити картку або вивести ефект, що вона оновилась
+        productCard.style.borderColor = '#fff';
+        setTimeout(() => {
+            productCard.style.borderColor = '';
+        }, 1000);
+    }
+}
 
     function changeQty(idx, delta) {
         cart[idx].qty += delta;
         if (cart[idx].qty < 1) cart.splice(idx, 1);
         updateUI();
     }
-
+function removeFromCart(cartKey) {
+    // Знаходимо товар за його унікальним cartKey і видаляємо з масиву
+    const index = cart.findIndex(x => x.cartKey === cartKey);
+    if (index !== -1) {
+        cart.splice(index, 1);
+        
+        // Зберігаємо та оновлюємо інтерфейс
+        if (typeof saveCart === 'function') saveCart();
+        updateUI();
+    }
+}
     function updateUI() {
     const cur = document.getElementById('currencySelect').value;
     const country = document.getElementById('countrySelect').value;
@@ -1817,6 +1855,7 @@ setTimeout(() => {
         document.getElementById('checkoutSection').style.display = 'none';
         document.getElementById('cartItems').innerHTML = "Cart is empty.";
     }
+    
 }
 function initPayPalMe() {
     // Зчитуємо обраний метод оплати
